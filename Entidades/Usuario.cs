@@ -42,11 +42,5 @@ namespace PPAI_DSI.Entidades
             get => contraseña;
             set => contraseña = value;
         }
-
-        public bool Habilitado
-        {
-            get => habilitado;
-            set => habilitado = value;
-        }
     }
 }

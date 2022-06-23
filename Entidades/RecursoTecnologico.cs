@@ -57,8 +57,6 @@ namespace PPAI_DSI.Entidades
             return CEActivo;
         }
 
-
-
         private List<string> mostrarMarcaYModelo(List<Marca> marcaBD)
         {
             return modeloDelRT.mostrarMarcaYModelo(marcaBD);

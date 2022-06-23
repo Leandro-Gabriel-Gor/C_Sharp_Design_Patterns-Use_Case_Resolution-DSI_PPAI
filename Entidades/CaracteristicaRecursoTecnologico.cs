@@ -10,11 +10,5 @@ namespace PPAI_DSI.Entidades
     {
         private int valor { get; set; }
         private Caracteristica caracteristica { get; set; }
-
-        public CaracteristicaRecursoTecnologico(int valor, Caracteristica caracteristica)
-        {
-            this.valor = valor;
-            this.caracteristica = caracteristica;
-        }
     }
 }

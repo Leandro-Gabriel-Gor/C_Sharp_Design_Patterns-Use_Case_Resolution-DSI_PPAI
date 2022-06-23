@@ -12,13 +12,6 @@ namespace PPAI_DSI.Entidades
         private DateTime? fechaHoraHasta { get; set; }
         private Estado estado { get; set; }
 
-        public CambioEstadoTurno(DateTime fechaHoraDesde, DateTime fechaHoraHasta, Estado estado)
-        {
-            this.fechaHoraDesde = fechaHoraDesde;
-            this.fechaHoraHasta = fechaHoraHasta;
-            this.estado = estado;
-        }
-
         public CambioEstadoTurno(DateTime fechaHoraDesde, Estado estado)
         {
             this.fechaHoraDesde = fechaHoraDesde;

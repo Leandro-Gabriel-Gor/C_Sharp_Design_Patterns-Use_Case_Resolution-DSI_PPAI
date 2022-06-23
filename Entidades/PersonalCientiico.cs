@@ -37,11 +37,6 @@ namespace PPAI_DSI.Entidades
             return usuario;
         }
 
-        internal void setTurno(Turno turnoSelec, AsignacionCientificoDelCl asignacionCI)
-        {
-            throw new NotImplementedException();
-        }
-
         internal string getMail()
         {
             return correoInstitucion;

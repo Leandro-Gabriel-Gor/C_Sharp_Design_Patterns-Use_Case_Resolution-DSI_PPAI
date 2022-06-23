@@ -66,11 +66,6 @@ namespace PPAI_DSI.Entidades
             return sigla;
         }
 
-        public List<AsignacionCientificoDelCl> getCientificos()
-        {
-            return cientificos;
-        }
-
         internal bool esTuCientificoActivo(PersonalCientiico personalCientiico, GestorReservaTurno gestor)
         {
             foreach(AsignacionCientificoDelCl asigCientif in cientificos)
