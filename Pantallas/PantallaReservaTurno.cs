@@ -1,12 +1,9 @@
 ﻿using PPAI_DSI.Entidades;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Net;
 using System.Net.Mail;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace PPAI_DSI
@@ -16,7 +13,7 @@ namespace PPAI_DSI
         private Usuario usuario;
         private Login login;
         private Menu menu;
-        
+
         public GestorReservaTurno gestor;
         private int indexRT = 0;
         private int indexFecha = 0;
@@ -32,7 +29,7 @@ namespace PPAI_DSI
             login = formlogin;
             menu = men;
         }
-        
+
         // habilitar()
         private void PantallaReservaTurno_Load(object sender, EventArgs e)
         {
@@ -135,7 +132,7 @@ namespace PPAI_DSI
 
 
             CambioEstadoTurno cambioEstadoTurno2 = new CambioEstadoTurno(
-                DateTime.Parse("18/11/2023 19:13:34"), 
+                DateTime.Parse("18/11/2023 19:13:34"),
                 estadoTurno);
 
             CambioEstadoTurno cambioEstadoTurno3 = new CambioEstadoTurno(
@@ -202,7 +199,7 @@ namespace PPAI_DSI
                 "Martes",
                 DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno4 }
                 );
-            
+
             Turno turno5 = new Turno(
                 DateTime.Parse("03/11/2025 9:30:00"),
                 DateTime.Parse("03/11/2025 9:40:00"),
@@ -227,10 +224,10 @@ namespace PPAI_DSI
             /* ----------- RECURSOS TECNOLOGICOS -----------*/
 
             RecursoTecnologico recT = new RecursoTecnologico
-                (1, 
-                DateTime.Today, 
-                "imagen", 
-                3, 
+                (1,
+                DateTime.Today,
+                "imagen",
+                3,
                 4,
                 tipoRT1,
                 new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
@@ -244,7 +241,7 @@ namespace PPAI_DSI
                 3,
                 4,
                 tipoRT1,
-                new List<Turno> {turno1, turno2 ,turno3, turno4, turnoReservado1 },
+                new List<Turno> { turno1, turno2, turno3, turno4, turnoReservado1 },
                 modelo2,
                 new List<CambioEstadoRT> { cambioEstadoRT }
                 );
@@ -256,7 +253,7 @@ namespace PPAI_DSI
                 13,
                 5,
                 tipoRT3,
-                new List<Turno> {turno2, turno4, turno3, turno7, turnoReservado1 },
+                new List<Turno> { turno2, turno4, turno3, turno7, turnoReservado1 },
                 modelo3,
                 new List<CambioEstadoRT> { cambioEstadoRT }
                 );
@@ -391,7 +388,7 @@ namespace PPAI_DSI
                 new List<Marca> { marca, marca1, marca2, marca3, marca4 },
                 new List<CentroDeInvestigacion> { CI, CI1 },
                 new List<PersonalCientiico> { perC1 },
-                new List<Estado> { estadoTurno, estadoTurno1, estadoTurno2}
+                new List<Estado> { estadoTurno, estadoTurno1, estadoTurno2 }
                 );
             gestor = gestor1;
             gestor.nuevaReserva(this);
@@ -400,7 +397,7 @@ namespace PPAI_DSI
             btnSeleccionRecurso.Enabled = false;
             btnSelecFecha.Enabled = false;
             btn_Turno.Enabled = false;
-            btnBuscar.Enabled = false;  
+            btnBuscar.Enabled = false;
         }
 
 

@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PPAI_DSI.Entidades
 {
     public class GestorReservaTurno
     {
         private List<TipoRecursoTecnologico> tiposRTBD;
-        private List <RecursoTecnologico> recursos { get; set; }
+        private List<RecursoTecnologico> recursos { get; set; }
         private Sesion sesion { get; set; }
         private List<TipoRecursoTecnologico> tiposRT { get; set; }
         private DateTime fecha { get; set; }
@@ -22,14 +20,14 @@ namespace PPAI_DSI.Entidades
         private List<PersonalCientiico> cientificosBD { get; set; }
         private List<Estado> estadosBD { get; set; }
         private List<Turno> turnos { get; set; }
-        private List<List<Turno>> matrizTurnos { get; set; } 
+        private List<List<Turno>> matrizTurnos { get; set; }
         private AsignacionCientificoDelCl asignacionCI { get; set; }
-        
+
         private int val = 0;
 
-        public GestorReservaTurno(List<RecursoTecnologico> recursos, Sesion sesion, List<TipoRecursoTecnologico> tiposRT, 
-            DateTime fecha, Turno turno, bool controlInvestigacionRT, List<TipoRecursoTecnologico> tiposRTSeleccionados, 
-            List<TipoRecursoTecnologico> tiposRTseleccionadosBD, List<RecursoTecnologico> recursosbd, List<Marca> marcaBD, 
+        public GestorReservaTurno(List<RecursoTecnologico> recursos, Sesion sesion, List<TipoRecursoTecnologico> tiposRT,
+            DateTime fecha, Turno turno, bool controlInvestigacionRT, List<TipoRecursoTecnologico> tiposRTSeleccionados,
+            List<TipoRecursoTecnologico> tiposRTseleccionadosBD, List<RecursoTecnologico> recursosbd, List<Marca> marcaBD,
             List<CentroDeInvestigacion> centroInvestigacionBD, List<PersonalCientiico> cientificosBD, List<Estado> estadosBD)
         {
             this.recursos = recursos;
@@ -51,7 +49,7 @@ namespace PPAI_DSI.Entidades
 
 
         // 1. 
-        public void nuevaReserva(PantallaReservaTurno boundary) 
+        public void nuevaReserva(PantallaReservaTurno boundary)
         {
             obtenerTipoRT();
             boundary.pedirSeleccionTipoRT(tiposRT);
@@ -215,12 +213,12 @@ namespace PPAI_DSI.Entidades
         {
             Estado EstadoRes = this.obtenerEstadoReservado();
             Turno turnoSelec = this.obtenerTurnoSeleccionado(indexT, indexFecha);
-            this.recursoTSeleccionado(RTindex).reservarTurno(turnoSelec, EstadoRes, asignacionCI);     
+            this.recursoTSeleccionado(RTindex).reservarTurno(turnoSelec, EstadoRes, asignacionCI);
         }
 
         private Estado obtenerEstadoReservado()
         {
-            foreach(Estado est in estadosBD)
+            foreach (Estado est in estadosBD)
             {
                 if (est.esAmbitoTurno())
                 {
