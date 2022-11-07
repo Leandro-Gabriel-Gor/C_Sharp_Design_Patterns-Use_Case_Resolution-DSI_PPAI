@@ -55,8 +55,9 @@ namespace PPAI_DSI.Entidades
             boundary.pedirSeleccionTipoRT(tiposRT);
         }
 
-        public void obtenerTipoRT()
+        public void obtenerTipoRT() // Aca se ingresa a BD
         {
+            // metodo que llena la lista tiposRTBD
             //llamar muchas veces el metodo mostrarTipoRecurso
             foreach (TipoRecursoTecnologico tipo in tiposRTBD)
             {

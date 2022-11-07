@@ -402,7 +402,8 @@ namespace PPAI_DSI
 
 
         // 2. 
-        public void pedirSeleccionTipoRT(List<TipoRecursoTecnologico> tiposRT)
+        // Se muestran los tipos y se pide que seleccionen
+        public void pedirSeleccionTipoRT(List<TipoRecursoTecnologico> tiposRT) 
         {
             cmbTipoRT.Items.Add("Todos");
             cmbTipoRT.SelectedIndex = -1;

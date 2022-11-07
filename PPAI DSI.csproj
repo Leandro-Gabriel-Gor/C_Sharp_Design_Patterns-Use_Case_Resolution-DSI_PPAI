@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DSI_3K2_grupo3DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSI_3K2_grupo3DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\AsignacionCientificoDelCl.cs" />
     <Compile Include="Entidades\CambioEstadoRT.cs" />
     <Compile Include="Entidades\CambioEstadoTurno.cs" />
@@ -102,6 +107,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DSI_3K2_grupo3DataSet.xsc">
+      <DependentUpon>DSI_3K2_grupo3DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DSI_3K2_grupo3DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSI_3K2_grupo3DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSI_3K2_grupo3DataSet.xss">
+      <DependentUpon>DSI_3K2_grupo3DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
