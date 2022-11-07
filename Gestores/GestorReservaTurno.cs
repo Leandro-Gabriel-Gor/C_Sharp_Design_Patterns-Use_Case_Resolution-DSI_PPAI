@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_DSI.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,6 +25,7 @@ namespace PPAI_DSI.Entidades
         private AsignacionCientificoDelCl asignacionCI { get; set; }
 
         private int val = 0;
+        private TiposRTRepositorio tiposRTRepositorio;
 
         public GestorReservaTurno(List<RecursoTecnologico> recursos, Sesion sesion, List<TipoRecursoTecnologico> tiposRT,
             DateTime fecha, Turno turno, bool controlInvestigacionRT, List<TipoRecursoTecnologico> tiposRTSeleccionados,
@@ -45,6 +47,7 @@ namespace PPAI_DSI.Entidades
             this.estadosBD = estadosBD;
             this.matrizTurnos = new List<List<Turno>>();
             this.asignacionCI = new AsignacionCientificoDelCl();
+            tiposRTRepositorio = new TiposRTRepositorio();
         }
 
 
@@ -57,6 +60,9 @@ namespace PPAI_DSI.Entidades
 
         public void obtenerTipoRT() // Aca se ingresa a BD
         {
+            var tiposRT = tiposRTRepositorio.GetTipos();
+            
+            
             // metodo que llena la lista tiposRTBD
             //llamar muchas veces el metodo mostrarTipoRecurso
             foreach (TipoRecursoTecnologico tipo in tiposRTBD)
