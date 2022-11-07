@@ -45,7 +45,7 @@ namespace PPAI_DSI
 
             Caracteristica carac2 = new Caracteristica("DPIs", "Cantidad de puntos por pulgada lineal");
 
-            Caracteristica carac3 = new Caracteristica("Colores", "Indica si tiene iluminación RGB");
+            Caracteristica carac3 = new Caracteristica("Colores", "Indica si tiene iluminación RGB.");
 
             Caracteristica carac4 = new Caracteristica("Resolución", "Resolucion en píxeles");
 
