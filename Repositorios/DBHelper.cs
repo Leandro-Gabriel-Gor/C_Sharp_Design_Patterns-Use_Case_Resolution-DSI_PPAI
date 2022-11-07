@@ -23,7 +23,7 @@ namespace PPAI_DSI.Repositorios
         {
 
             // string_conexion_local = "Data Source=DESKTOP-LBVUJ09\\SQLEXPRESS;Initial Catalog=BTSPAVI3K220201;Integrated Security=True;MultipleActiveResultSets=True";
-            string_conexion = "Data Source=200.69.137.167,11333;Initial Catalog=PAVI3k2BTS_2022;User ID=PAVI3k2BTS_2022;Password=PAVI3k2BTS#2022";
+            string_conexion = "Data Source=200.69.137.167,11333;Initial Catalog=DSI_3K2_grupo3;Persist Security Info=True;User ID=DSI_3K2_grupo3;Password=DSI_3K2_grupo32";
         }
 
         public static DBHelper GetDBHelper() //Solo puede existir una instancia del DBHelper, y mediante este metodo se accede a los demas. Implementacion del Patron Singleton
