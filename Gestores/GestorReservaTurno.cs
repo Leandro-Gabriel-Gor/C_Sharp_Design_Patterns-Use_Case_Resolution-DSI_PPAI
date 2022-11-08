@@ -217,9 +217,9 @@ namespace PPAI_DSI.Entidades
 
         private void generarReservaRTSeleccionado(int RTindex, int indexT, int indexFecha)
         {
-            Estado EstadoRes = this.obtenerEstadoReservado();
+            //Estado EstadoRes = this.obtenerEstadoReservado();
             Turno turnoSelec = this.obtenerTurnoSeleccionado(indexT, indexFecha);
-            this.recursoTSeleccionado(RTindex).reservarTurno(turnoSelec, EstadoRes, asignacionCI);
+            this.recursoTSeleccionado(RTindex).reservarTurno(turnoSelec, asignacionCI);
         }
 
         private Estado obtenerEstadoReservado()
@@ -244,7 +244,7 @@ namespace PPAI_DSI.Entidades
 
         private string obtenerStrRT(int indexRT)
         {
-            return "(Datos RT)";
+            return recursos[indexRT].toString();
         }
     }
 }
