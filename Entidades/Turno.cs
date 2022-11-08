@@ -68,5 +68,10 @@ namespace PPAI_DSI.Entidades
                 + "Hora de Inicio: " + fechaHoraInicio.ToString("HH:mm") + "hs" + ".\n"
                 + "Hora de Fin: " + fechaHoraFin.ToString("HH:mm") + "hs.";
         }
+
+        public void agregarCambioEstadoTurno(CambioEstadoTurno c)
+        {
+            this.cambioEstadoTurno.Add(c);
+        }
     }
 }

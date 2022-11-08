@@ -25,7 +25,6 @@ namespace PPAI_DSI.Entidades
         private AsignacionCientificoDelCl asignacionCI { get; set; }
 
         private int val = 0;
-        private TiposRTRepositorio tiposRTRepositorio;
 
         public GestorReservaTurno(List<RecursoTecnologico> recursos, Sesion sesion, List<TipoRecursoTecnologico> tiposRT,
             DateTime fecha, Turno turno, bool controlInvestigacionRT, List<TipoRecursoTecnologico> tiposRTSeleccionados,
@@ -47,7 +46,7 @@ namespace PPAI_DSI.Entidades
             this.estadosBD = estadosBD;
             this.matrizTurnos = new List<List<Turno>>();
             this.asignacionCI = new AsignacionCientificoDelCl();
-            tiposRTRepositorio = new TiposRTRepositorio();
+            //tiposRTRepositorio = new TiposRTRepositorio();
         }
 
 
@@ -60,7 +59,7 @@ namespace PPAI_DSI.Entidades
 
         public void obtenerTipoRT() // Aca se ingresa a BD
         {
-            var tiposRT = tiposRTRepositorio.GetTipos();
+            //var tiposRT = tiposRTRepositorio.GetTipos();
             
             
             // metodo que llena la lista tiposRTBD

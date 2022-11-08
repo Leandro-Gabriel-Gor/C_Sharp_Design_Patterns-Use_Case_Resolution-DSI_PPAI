@@ -10,7 +10,7 @@ namespace PPAI_DSI.Entidades
     {
         private DateTime fechaHoraDesde { get; set; }
         private DateTime? fechaHoraHasta { get; set; }
-        private Estado estado { get; set; }
+        public Estado estado { get; set; }
 
         public CambioEstadoRT(DateTime fechaHoraDesde, Estado estado)
         {

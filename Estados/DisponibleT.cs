@@ -1,0 +1,42 @@
+﻿using PPAI_DSI.Entidades;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PPAI_DSI.Estados
+{
+    public class DisponibleT : Estado
+    {
+        DisponibleT(string nombre, string descripcion, string ambito, bool esReservable, bool esCancelable) : base(nombre, descripcion, ambito, esReservable, esCancelable)
+        {
+        }
+
+        public void reservarTurno(Turno turnoSeleccionado, PersonalCientiico ci, List<CambioEstadoTurno> cambioEstados) {
+            CambioEstadoTurno actualCET = buscarCambioEstadoActual(cambioEstados);
+            actualCET.setFechaHoraHasta();
+            Estado nuevoEstado = crearEstadoNuevo();
+
+        }
+
+        public Estado crearEstadoNuevo()
+        {
+            return new ReservadoT(
+                "Reserva Pendiente", "La reserva del turno se encuentra pendiente de confirmación.", "Turno", true, false);
+        }
+
+        public CambioEstadoTurno buscarCambioEstadoActual(List<CambioEstadoTurno> cambioEstadoTurno)
+        {
+            foreach (var CEturno in cambioEstadoTurno)
+            {
+                if (CEturno.esActual())
+                {
+                    return CEturno;
+                }
+            }
+            return new CambioEstadoTurno();
+        } 
+
+    }
+}

@@ -1,4 +1,5 @@
 ﻿using PPAI_DSI.Entidades;
+using PPAI_DSI.Estados;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -98,7 +99,7 @@ namespace PPAI_DSI
 
             /* ----------- ESTADOS -----------*/
             /* Turno */
-            Estado estadoTurno = new Estado(
+            Disponible estadoTurno = new Disponible(
                 "Disponible", "El Turno se encuentra disponible para ser reservado.", "Turno", true, false);
             Estado estadoTurno1 = new Estado(
                 "Reserva Pendiente", "La reserva del turno se encuentra pendiente de confirmación.", "Turno", true, false);

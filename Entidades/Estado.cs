@@ -8,11 +8,11 @@ namespace PPAI_DSI.Entidades
 {
     public class Estado
     {
-        private string nombre { get; set; }
-        private string descripcion { get; set; }
-        private string ambito { get; set; }
-        private bool esReservable { get; set; }
-        private bool esCancelable { get; set; }
+        internal string nombre { get; set; }
+        internal string descripcion { get; set; }
+        internal string ambito { get; set; }
+        internal bool esReservable { get; set; }
+        internal bool esCancelable { get; set; }
 
         public Estado(string nombre, string descripcion, string ambito, bool esReservable, bool esCancelable)
         {
@@ -26,9 +26,9 @@ namespace PPAI_DSI.Entidades
         {
 
         }
-        public bool esReservable1()
+        public virtual bool esReservable1()
         {
-            return esReservable;
+            return false;
         }
 
         public string getNombre()

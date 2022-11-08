@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PPAI_DSI.Repositorios
 {
-    public class TiposRTRepositorio
-    {
-        public List;
-    }
+    //public class TiposRTRepositorio
+    //{
+       // public List
+    //}
 }

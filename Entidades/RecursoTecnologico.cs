@@ -16,7 +16,7 @@ namespace PPAI_DSI.Entidades
         private TipoRecursoTecnologico tipoRecursoT { get; set; }
         private List<Turno> turnos { get; set; }
         private Modelo modeloDelRT { get; set; }
-        private List<CambioEstadoRT> cambioEstadoRT { get; set; }
+        public List<CambioEstadoRT> cambioEstadoRT { get; set; }
 
 
         public RecursoTecnologico(int numeroRT, DateTime fechaAlta, string imagen, int periodicidadMantenimientoPrev, int duracionMantenimientoPrev, TipoRecursoTecnologico tipoRecursoT, List<Turno> turno, Modelo modeloDelRT, List<CambioEstadoRT> cambioEstadoRT)

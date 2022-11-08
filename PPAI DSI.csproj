@@ -58,6 +58,7 @@
     <Compile Include="Entidades\CaracteristicaRecursoTecnologico.cs" />
     <Compile Include="Entidades\CentroDeInvestigacion.cs" />
     <Compile Include="Entidades\Estado.cs" />
+    <Compile Include="Estados\Disponible.cs" />
     <Compile Include="Gestores\GestorReservaTurno.cs" />
     <Compile Include="Pantallas\InterfazMailReservaTurno.cs" />
     <Compile Include="Entidades\Marca.cs" />
