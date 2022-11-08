@@ -34,373 +34,357 @@ namespace PPAI_DSI
         // habilitar()
         private void PantallaReservaTurno_Load(object sender, EventArgs e)
         {
-            /* ----------- Información de sesion -----------*/
+            ///* ----------- Información de sesion -----------*/
 
             Sesion sesion = new Sesion(DateTime.Now, DateTime.Now, usuario);
 
 
-            /* ----------- Caracteristicas -----------*/
-            Caracteristica carac = new Caracteristica("Memoria", "cantidad de memoria para guardar");
+            ///* ----------- Caracteristicas -----------*/
+            //Caracteristica carac = new Caracteristica("Memoria", "cantidad de memoria para guardar");
 
-            Caracteristica carac1 = new Caracteristica("Tamaño", "Tamaño en cm del RT");
+            //Caracteristica carac1 = new Caracteristica("Tamaño", "Tamaño en cm del RT");
 
-            Caracteristica carac2 = new Caracteristica("DPIs", "Cantidad de puntos por pulgada lineal");
+            //Caracteristica carac2 = new Caracteristica("DPIs", "Cantidad de puntos por pulgada lineal");
 
-            Caracteristica carac3 = new Caracteristica("Colores", "Indica si tiene iluminación RGB.");
+            //Caracteristica carac3 = new Caracteristica("Colores", "Indica si tiene iluminación RGB.");
 
-            Caracteristica carac4 = new Caracteristica("Resolución", "Resolucion en píxeles");
+            //Caracteristica carac4 = new Caracteristica("Resolución", "Resolucion en píxeles");
 
-            Caracteristica carac5 = new Caracteristica("Luminancia", "Medida intensidad de luz que emite el monitor.");
+            //Caracteristica carac5 = new Caracteristica("Luminancia", "Medida intensidad de luz que emite el monitor.");
 
 
-            /* ----------- TIPO RECURSO -----------*/
+            ///* ----------- TIPO RECURSO -----------*/
 
-            TipoRecursoTecnologico tipoRT1 = new TipoRecursoTecnologico(
-                "Computadora",
-                "PC de alta gama - Gigabyte GeForce GTX 1060",
-                new List<Caracteristica> { carac });
+            //TipoRecursoTecnologico tipoRT1 = new TipoRecursoTecnologico(
+            //    "Computadora",
+            //    "PC de alta gama - Gigabyte GeForce GTX 1060",
+            //    new List<Caracteristica> { carac });
 
-            TipoRecursoTecnologico tipoRT2 = new TipoRecursoTecnologico(
-                "Microscopio",
-                "MICROSCOPIO Óptico Compuesto",
-                new List<Caracteristica> { carac });
+            //TipoRecursoTecnologico tipoRT2 = new TipoRecursoTecnologico(
+            //    "Microscopio",
+            //    "MICROSCOPIO Óptico Compuesto",
+            //    new List<Caracteristica> { carac });
 
-            TipoRecursoTecnologico tipoRT3 = new TipoRecursoTecnologico(
-                "Impresora",
-                "Impresora doble faz",
-                new List<Caracteristica> { carac1 });
+            //TipoRecursoTecnologico tipoRT3 = new TipoRecursoTecnologico(
+            //    "Impresora",
+            //    "Impresora doble faz",
+            //    new List<Caracteristica> { carac1 });
 
-            TipoRecursoTecnologico tipoRT4 = new TipoRecursoTecnologico(
-                "Mouse",
-                "Mouse gamer 1ra generación",
-                new List<Caracteristica> { carac2, carac3 });
+            //TipoRecursoTecnologico tipoRT4 = new TipoRecursoTecnologico(
+            //    "Mouse",
+            //    "Mouse gamer 1ra generación",
+            //    new List<Caracteristica> { carac2, carac3 });
 
-            TipoRecursoTecnologico tipoRT5 = new TipoRecursoTecnologico(
-                "Monitor",
-                "Monitor LG Curvo full HD",
-                new List<Caracteristica> { carac4, carac5 });
+            //TipoRecursoTecnologico tipoRT5 = new TipoRecursoTecnologico(
+            //    "Monitor",
+            //    "Monitor LG Curvo full HD",
+            //    new List<Caracteristica> { carac4, carac5 });
 
 
-            /* ----------- MODELOS -----------*/
+            ///* ----------- MODELOS -----------*/
 
-            Modelo modelo1 = new Modelo("LX-500");
-            Modelo modelo2 = new Modelo("Dinamic");
-            Modelo modelo3 = new Modelo("GT 1050");
-            Modelo modelo4 = new Modelo("Y530-150YH");
-            Modelo modelo5 = new Modelo("Canopus II");
+            //Modelo modelo1 = new Modelo("LX-500");
+            //Modelo modelo2 = new Modelo("Dinamic");
+            //Modelo modelo3 = new Modelo("GT 1050");
+            //Modelo modelo4 = new Modelo("Y530-150YH");
+            //Modelo modelo5 = new Modelo("Canopus II");
 
-            /* ----------- MARCAS -----------*/
+            ///* ----------- MARCAS -----------*/
 
-            Marca marca = new Marca("Sony", new List<Modelo> { modelo1 });
-            Marca marca1 = new Marca("Lenovo", new List<Modelo> { modelo2 });
-            Marca marca2 = new Marca("Lenovo", new List<Modelo> { modelo3 });
-            Marca marca3 = new Marca("LG", new List<Modelo> { modelo4 });
-            Marca marca4 = new Marca("Samsung", new List<Modelo> { modelo5 });
+            //Marca marca = new Marca("Sony", new List<Modelo> { modelo1 });
+            //Marca marca1 = new Marca("Lenovo", new List<Modelo> { modelo2 });
+            //Marca marca2 = new Marca("Lenovo", new List<Modelo> { modelo3 });
+            //Marca marca3 = new Marca("LG", new List<Modelo> { modelo4 });
+            //Marca marca4 = new Marca("Samsung", new List<Modelo> { modelo5 });
 
-            /* ----------- ESTADOS -----------*/
-            /* Turno */
-            Estado estadoTurno = new DisponibleT(
-                "Disponible", "El Turno se encuentra disponible para ser reservado.", "Turno");
-            Estado estadoTurno1 = new Estado(
-                "Reserva Pendiente", "La reserva del turno se encuentra pendiente de confirmación.", "Turno");
-            Estado estadoTurno2 = new Estado(
-                "Reservado", "El turno ha sido reservado por un personal científico", "Turno");
+            ///* ----------- ESTADOS -----------*/
+            ///* Turno */
+            //Estado estadoTurno = new DisponibleT(
+            //    "Disponible", "El Turno se encuentra disponible para ser reservado.", "Turno");
+            //Estado estadoTurno1 = new Estado(
+            //    "Reserva Pendiente", "La reserva del turno se encuentra pendiente de confirmación.", "Turno");
+            //Estado estadoTurno2 = new Estado(
+            //    "Reservado", "El turno ha sido reservado por un personal científico", "Turno");
 
-            /* RT */
+            ///* RT */
 
-            Estado estadoRT = new Disponible(
-                "Disponible", "El Turno se encuentra disponible para ser reservado.", "Turno");
+            //Estado estadoRT = new Disponible(
+            //    "Disponible", "El Turno se encuentra disponible para ser reservado.", "Turno");
 
-            Estado estadoRT1 = new Estado(
-                "Inicio Mantenimiento", "El RT no se encuentra disponible para su uso", "RT");
+            //Estado estadoRT1 = new Estado(
+            //    "Inicio Mantenimiento", "El RT no se encuentra disponible para su uso", "RT");
 
 
-            /* ----------- CAMBIO ESTADO -----------*/
-            /* Turno */
+            ///* ----------- CAMBIO ESTADO -----------*/
+            ///* Turno */
 
-            CambioEstadoTurno cambioEstadoTurno = new CambioEstadoTurno(
-                DateTime.Parse("13/6/2023 7:43:53"),
-                estadoTurno);
+            //CambioEstadoTurno cambioEstadoTurno = new CambioEstadoTurno(
+            //    DateTime.Parse("13/6/2023 7:43:53"),
+            //    estadoTurno);
 
 
 
-            CambioEstadoTurno cambioEstadoTurnoReservado = new CambioEstadoTurno(
-                DateTime.Parse("17/11/2023 19:13:34"),
-                estadoTurno2);
+            //CambioEstadoTurno cambioEstadoTurnoReservado = new CambioEstadoTurno(
+            //    DateTime.Parse("17/11/2023 19:13:34"),
+            //    estadoTurno2);
 
 
 
 
 
-            CambioEstadoTurno cambioEstadoTurno1 = new CambioEstadoTurno(
-                DateTime.Parse("14/05/2019 20:00:01"),
-                estadoTurno1);
+            //CambioEstadoTurno cambioEstadoTurno1 = new CambioEstadoTurno(
+            //    DateTime.Parse("14/05/2019 20:00:01"),
+            //    estadoTurno1);
 
-
-            /* RT */
+
+            ///* RT */
 
-            CambioEstadoRT cambioEstadoRT = new CambioEstadoRT(
-                DateTime.Now, estadoRT);
-
-            CambioEstadoRT cambioEstadoRT2 = new CambioEstadoRT(
-                DateTime.Parse("19/3/2021 20:04:14"), estadoRT1);
-
-            //CambioEstadoRT cambioEstadoRT3 = new CambioEstadoRT(
-            //    DateTime.Parse("15/8/2030 12:03:11"), estadoRT);
-
-            //CambioEstadoRT cambioEstadoRT4 = new CambioEstadoRT(
-            //    DateTime.Parse("19/3/2021 08:09:27"), estadoRT1);
-
-            /* ----------- TURNOS -----------*/
-
-            Turno turno = new Turno(
-                DateTime.Now,
-                DateTime.Now,
-                "viernes",
-                DateTime.Now,
-                new List<CambioEstadoTurno> { cambioEstadoTurno },
-                estadoTurno);
-
-            Turno turno1 = new Turno(
-                DateTime.Parse("06/01/2024 6:34:53"),
-                DateTime.Parse("06/01/2024 8:37:04"),
-                "Miercoles",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno1 },
-                estadoTurno
-                );
-            Turno turnoReservado1 = new Turno(
-                DateTime.Parse("06/01/2024 10:34:53"),
-                DateTime.Parse("06/01/2024 12:37:04"),
-                "Miercoles",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
-                estadoTurno2
-                );
-
-            Turno turno2 = new Turno(
-                DateTime.Parse("07/01/2024 16:34:53"),
-                DateTime.Parse("07/01/2024 18:37:04"),
-                "Jueves",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
-                estadoTurno2
-                );
-
-            Turno turno3 = new Turno(
-                DateTime.Parse("03/12/2024 16:34:53"),
-                DateTime.Parse("03/12/2024 8:37:04"),
-                "Lunes",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
-                estadoTurno
-                );
-
-            Turno turno4 = new Turno(
-                DateTime.Parse("03/12/2024 9:30:53"),
-                DateTime.Parse("03/12/2024 9:37:04"),
-                "Martes",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
-                estadoTurno
-                );
-
-            Turno turno5 = new Turno(
-                DateTime.Parse("03/11/2025 9:30:00"),
-                DateTime.Parse("03/11/2025 9:40:00"),
-                "Sábado",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
-                estadoTurno
-                );
-
-            Turno turno6 = new Turno(
-                DateTime.Parse("08/06/2026 9:30:53"),
-                DateTime.Parse("08/06/2026 10:37:00"),
-                "Lunes",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
-                estadoTurno
-                );
-
-            Turno turno7 = new Turno(
-                DateTime.Parse("03/12/2024 10:30:53"),
-                DateTime.Parse("03/12/2024 11:37:04"),
-                "Miercoles",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
-                estadoTurno2
-                );
-
-            /* ----------- RECURSOS TECNOLOGICOS -----------*/
-
-            RecursoTecnologico recT = new RecursoTecnologico
-                (1,
-                DateTime.Today,
-                "imagen",
-                3,
-                4,
-                tipoRT1,
-                new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
-                modelo1,
-                new List<CambioEstadoRT> { cambioEstadoRT },
-                estadoRT);
-
-            RecursoTecnologico rt = new RecursoTecnologico
-                (400,
-                DateTime.Parse("6/1/2016 6:34:53"),
-                "imagen",
-                3,
-                4,
-                tipoRT1,
-                new List<Turno> { turno1, turno2, turno3, turno4, turnoReservado1 },
-                modelo2,
-                new List<CambioEstadoRT> { cambioEstadoRT },
-                estadoRT
-                );
-
-            RecursoTecnologico rt2 = new RecursoTecnologico
-                (300,
-                DateTime.Parse("6/1/2016 6:34:53"),
-                "imagen",
-                13,
-                5,
-                tipoRT3,
-                new List<Turno> { turno2, turno4, turno3, turno7, turnoReservado1 },
-                modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT },
-                estadoRT
-                );
-
-            RecursoTecnologico rt3 = new RecursoTecnologico
-                (2,
-                DateTime.Parse("6/2/2017 14:15:20"),
-                "imagen",
-                2,
-                12,
-                tipoRT3,
-                new List<Turno> { turno1, turno2, turno3, turno4, turno6, turnoReservado1 },
-                modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT, cambioEstadoRT2 },
-                estadoRT
-                );
-
-            RecursoTecnologico rt4 = new RecursoTecnologico
-                (3,
-                DateTime.Parse("7/3/2018 18:20:00"),
-                "imagen",
-                7,
-                17,
-                tipoRT2,
-                new List<Turno> { turno, turno3, turno6, turno7, turnoReservado1 },
-                modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT },
-                estadoRT
-                );
-
-            RecursoTecnologico rt5 = new RecursoTecnologico
-                (300,
-                DateTime.Parse("6/1/2016 6:34:53"),
-                "imagen",
-                13,
-                6,
-                tipoRT3,
-                new List<Turno> { turnoReservado1 },
-                modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT2 },
-                estadoRT1
-                );
-
-            RecursoTecnologico recT6 = new RecursoTecnologico
-                (14,
-                DateTime.Today,
-                "imagen",
-                3,
-                4,
-                tipoRT4,
-                new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
-                modelo2,
-                new List<CambioEstadoRT> { cambioEstadoRT },
-                estadoRT);
-
-            RecursoTecnologico recT7 = new RecursoTecnologico
-                (15,
-                DateTime.Today,
-                "imagen",
-                3,
-                4,
-                tipoRT5,
-                new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
-                modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT2 },
-                estadoRT1);
-
-            /* ----------- Personal Cientifico -----------*/
-
-            PersonalCientiico perC1 = new PersonalCientiico(
-                "86809", "Mariana", "Shwagger", "34556756", "Inst43@gmail.com", "mariSw1978@gmail.com", "+54 03245678", usuario);
-
-            /* ----------- Asignacion -----------*/
-            AsignacionCientificoDelCl asig = new AsignacionCientificoDelCl(
-                DateTime.Parse("6/1/2016 6:34:53"),
-                perC1,
-                new List<Turno> { });
-
-            /* ----------- Centros de Investigacion -----------*/
-
-            CentroDeInvestigacion CI = new CentroDeInvestigacion(
-                "Centro de investigacion desarrollo de Sistemas",
-                "CIDS",
-                "Maestro Lopez 223",
-                "Edificio Facha",
-                2,
-                "32324,123123,213",
-                3100,
-                "cids@gmail.com",
-                3,
-                DateTime.Today,
-                "reglamento",
-                "caracteristica",
-                DateTime.Today,
-                DateTime.Today,
-                "motivo",
-                DateTime.Today,
-                new List<AsignacionCientificoDelCl> { asig },
-                new List<RecursoTecnologico> { rt, rt2, rt3, rt5, recT6 }
-                );
-
-            CentroDeInvestigacion CI1 = new CentroDeInvestigacion(
-                "Instituto de Antropología de Córdoba",
-                "IDACOR ",
-                "Av. Hipólito Yrigoyen 174",
-                "CONICET-UNC",
-                3,
-                "32324,123123,213",
-                5400,
-                "idacor.secretaria@gmail.com",
-                2,
-                DateTime.Today,
-                "reglamento",
-                "caracteristica",
-                DateTime.Today,
-                DateTime.Today,
-                "motivo",
-                DateTime.Today,
-                new List<AsignacionCientificoDelCl> { asig },
-                new List<RecursoTecnologico> { recT, rt4, recT7 }
-                );
-
-            /* ----------- ASIGNACION Gestor -----------*/
-
-            GestorReservaTurno gestor1 = new GestorReservaTurno
-                (
-                new List<RecursoTecnologico> { },
-                sesion,
-                new List<TipoRecursoTecnologico> { },
-                DateTime.Now,
-                turno,
-                true,
-                new List<TipoRecursoTecnologico> { },
-                /* Datos BD */
-                new List<TipoRecursoTecnologico> { tipoRT1, tipoRT2, tipoRT3, tipoRT4, tipoRT5 },
-                new List<RecursoTecnologico> { rt, rt2, recT, rt4, rt3, rt5, recT6, recT7 },
-                new List<Marca> { marca, marca1, marca2, marca3, marca4 },
-                new List<CentroDeInvestigacion> { CI, CI1 },
-                new List<PersonalCientiico> { perC1 },
-                new List<Estado> { estadoTurno, estadoTurno1, estadoTurno2 }
-                );
+            //CambioEstadoRT cambioEstadoRT = new CambioEstadoRT(
+            //    DateTime.Now, estadoRT);
+
+            //CambioEstadoRT cambioEstadoRT2 = new CambioEstadoRT(
+            //    DateTime.Parse("19/3/2021 20:04:14"), estadoRT1);
+
+            ////CambioEstadoRT cambioEstadoRT3 = new CambioEstadoRT(
+            ////    DateTime.Parse("15/8/2030 12:03:11"), estadoRT);
+
+            ////CambioEstadoRT cambioEstadoRT4 = new CambioEstadoRT(
+            ////    DateTime.Parse("19/3/2021 08:09:27"), estadoRT1);
+
+            ///* ----------- TURNOS -----------*/
+
+            //Turno turno = new Turno(
+            //    DateTime.Now,
+            //    DateTime.Now,
+            //    "viernes",
+            //    DateTime.Now,
+            //    new List<CambioEstadoTurno> { cambioEstadoTurno },
+            //    estadoTurno);
+
+            //Turno turno1 = new Turno(
+            //    DateTime.Parse("06/01/2024 6:34:53"),
+            //    DateTime.Parse("06/01/2024 8:37:04"),
+            //    "Miercoles",
+            //    DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno1 },
+            //    estadoTurno
+            //    );
+            //Turno turnoReservado1 = new Turno(
+            //    DateTime.Parse("06/01/2024 10:34:53"),
+            //    DateTime.Parse("06/01/2024 12:37:04"),
+            //    "Miercoles",
+            //    DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
+            //    estadoTurno2
+            //    );
+
+            //Turno turno2 = new Turno(
+            //    DateTime.Parse("07/01/2024 16:34:53"),
+            //    DateTime.Parse("07/01/2024 18:37:04"),
+            //    "Jueves",
+            //    DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
+            //    estadoTurno2
+            //    );
+
+            //Turno turno3 = new Turno(
+            //    DateTime.Parse("03/12/2024 16:34:53"),
+            //    DateTime.Parse("03/12/2024 8:37:04"),
+            //    "Lunes",
+            //    DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
+            //    estadoTurno
+            //    );
+
+            //Turno turno4 = new Turno(
+            //    DateTime.Parse("03/12/2024 9:30:53"),
+            //    DateTime.Parse("03/12/2024 9:37:04"),
+            //    "Martes",
+            //    DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
+            //    estadoTurno
+            //    );
+
+            //Turno turno5 = new Turno(
+            //    DateTime.Parse("03/11/2025 9:30:00"),
+            //    DateTime.Parse("03/11/2025 9:40:00"),
+            //    "Sábado",
+            //    DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
+            //    estadoTurno
+            //    );
+
+            //Turno turno6 = new Turno(
+            //    DateTime.Parse("08/06/2026 9:30:53"),
+            //    DateTime.Parse("08/06/2026 10:37:00"),
+            //    "Lunes",
+            //    DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
+            //    estadoTurno
+            //    );
+
+            //Turno turno7 = new Turno(
+            //    DateTime.Parse("03/12/2024 10:30:53"),
+            //    DateTime.Parse("03/12/2024 11:37:04"),
+            //    "Miercoles",
+            //    DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
+            //    estadoTurno2
+            //    );
+
+            ///* ----------- RECURSOS TECNOLOGICOS -----------*/
+
+            //RecursoTecnologico recT = new RecursoTecnologico
+            //    (1,
+            //    DateTime.Today,
+            //    "imagen",
+            //    3,
+            //    4,
+            //    tipoRT1,
+            //    new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
+            //    modelo1,
+            //    new List<CambioEstadoRT> { cambioEstadoRT },
+            //    estadoRT);
+
+            //RecursoTecnologico rt = new RecursoTecnologico
+            //    (400,
+            //    DateTime.Parse("6/1/2016 6:34:53"),
+            //    "imagen",
+            //    3,
+            //    4,
+            //    tipoRT1,
+            //    new List<Turno> { turno1, turno2, turno3, turno4, turnoReservado1 },
+            //    modelo2,
+            //    new List<CambioEstadoRT> { cambioEstadoRT },
+            //    estadoRT
+            //    );
+
+            //RecursoTecnologico rt2 = new RecursoTecnologico
+            //    (300,
+            //    DateTime.Parse("6/1/2016 6:34:53"),
+            //    "imagen",
+            //    13,
+            //    5,
+            //    tipoRT3,
+            //    new List<Turno> { turno2, turno4, turno3, turno7, turnoReservado1 },
+            //    modelo3,
+            //    new List<CambioEstadoRT> { cambioEstadoRT },
+            //    estadoRT
+            //    );
+
+            //RecursoTecnologico rt3 = new RecursoTecnologico
+            //    (2,
+            //    DateTime.Parse("6/2/2017 14:15:20"),
+            //    "imagen",
+            //    2,
+            //    12,
+            //    tipoRT3,
+            //    new List<Turno> { turno1, turno2, turno3, turno4, turno6, turnoReservado1 },
+            //    modelo3,
+            //    new List<CambioEstadoRT> { cambioEstadoRT, cambioEstadoRT2 },
+            //    estadoRT
+            //    );
+
+            //RecursoTecnologico rt4 = new RecursoTecnologico
+            //    (3,
+            //    DateTime.Parse("7/3/2018 18:20:00"),
+            //    "imagen",
+            //    7,
+            //    17,
+            //    tipoRT2,
+            //    new List<Turno> { turno, turno3, turno6, turno7, turnoReservado1 },
+            //    modelo3,
+            //    new List<CambioEstadoRT> { cambioEstadoRT },
+            //    estadoRT
+            //    );
+
+            //RecursoTecnologico rt5 = new RecursoTecnologico
+            //    (300,
+            //    DateTime.Parse("6/1/2016 6:34:53"),
+            //    "imagen",
+            //    13,
+            //    6,
+            //    tipoRT3,
+            //    new List<Turno> { turnoReservado1 },
+            //    modelo3,
+            //    new List<CambioEstadoRT> { cambioEstadoRT2 },
+            //    estadoRT1
+            //    );
+
+            //RecursoTecnologico recT6 = new RecursoTecnologico
+            //    (14,
+            //    DateTime.Today,
+            //    "imagen",
+            //    3,
+            //    4,
+            //    tipoRT4,
+            //    new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
+            //    modelo2,
+            //    new List<CambioEstadoRT> { cambioEstadoRT },
+            //    estadoRT);
+
+            //RecursoTecnologico recT7 = new RecursoTecnologico
+            //    (15,
+            //    DateTime.Today,
+            //    "imagen",
+            //    3,
+            //    4,
+            //    tipoRT5,
+            //    new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
+            //    modelo3,
+            //    new List<CambioEstadoRT> { cambioEstadoRT2 },
+            //    estadoRT1);
+
+            ///* ----------- Personal Cientifico -----------*/
+
+            //PersonalCientiico perC1 = new PersonalCientiico(
+            //    "86809", "Mariana", "Shwagger", "34556756", "Inst43@gmail.com", "mariSw1978@gmail.com", "+54 03245678", usuario);
+
+            ///* ----------- Asignacion -----------*/
+            //AsignacionCientificoDelCl asig = new AsignacionCientificoDelCl(
+            //    DateTime.Parse("6/1/2016 6:34:53"),
+            //    perC1,
+            //    new List<Turno> { });
+
+            ///* ----------- Centros de Investigacion -----------*/
+
+            //CentroDeInvestigacion CI = new CentroDeInvestigacion(
+            //    "Centro de investigacion desarrollo de Sistemas",
+            //    "CIDS",
+            //    "Maestro Lopez 223",
+            //    "Edificio Facha",
+            //    2,
+            //    "32324,123123,213",
+            //    3100,
+            //    "cids@gmail.com",
+            //    3,
+            //    DateTime.Today,
+            //    "reglamento",
+            //    "caracteristica",
+            //    DateTime.Today,
+            //    DateTime.Today,
+            //    "motivo",
+            //    DateTime.Today,
+            //    new List<AsignacionCientificoDelCl> { asig },
+            //    new List<RecursoTecnologico> { rt, rt2, rt3, rt5, recT6 }
+            //    );
+
+            //CentroDeInvestigacion CI1 = new CentroDeInvestigacion(
+            //    "Instituto de Antropología de Córdoba",
+            //    "IDACOR ",
+            //    "Av. Hipólito Yrigoyen 174",
+            //    "CONICET-UNC",
+            //    3,
+            //    "32324,123123,213",
+            //    5400,
+            //    "idacor.secretaria@gmail.com",
+            //    2,
+            //    DateTime.Today,
+            //    "reglamento",
+            //    "caracteristica",
+            //    DateTime.Today,
+            //    DateTime.Today,
+            //    "motivo",
+            //    DateTime.Today,
+            //    new List<AsignacionCientificoDelCl> { asig },
+            //    new List<RecursoTecnologico> { recT, rt4, recT7 }
+            //    );
+
+            ///* ----------- ASIGNACION Gestor -----------*/
+
+            GestorReservaTurno gestor1 = new GestorReservaTurno(sesion);
             gestor = gestor1;
             gestor.nuevaReserva(this);
 

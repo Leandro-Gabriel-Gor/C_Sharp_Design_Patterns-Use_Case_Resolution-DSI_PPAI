@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_DSI.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,7 @@ namespace PPAI_DSI.Entidades
 {
     public class GestorReservaTurno
     {
+        SuperObjetoPersistente sop = new SuperObjetoPersistente();
         private List<TipoRecursoTecnologico> tiposRTBD;
         private List<RecursoTecnologico> recursos { get; set; }
         private Sesion sesion { get; set; }
@@ -46,6 +48,17 @@ namespace PPAI_DSI.Entidades
             this.matrizTurnos = new List<List<Turno>>();
             this.asignacionCI = new AsignacionCientificoDelCl();
             //tiposRTRepositorio = new TiposRTRepositorio();
+        }
+
+        public GestorReservaTurno(Sesion sesion)
+        {
+            this.sesion = sesion;
+            this.tiposRT = sop.getRTBD();
+            this.recursosbd = sop.getRecursosBD();
+            this.centroInvestigacionBD = sop.getCIBD();
+            this.marcaBD = sop.getMarcaBD();
+            this.estadosBD = sop.getEstadosBD();
+            this.cientificosBD = sop.getPCBD();
         }
 
 
