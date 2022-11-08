@@ -121,7 +121,7 @@ namespace PPAI_DSI.Entidades
             {
                 if(tur == turno)
                 {
-                    tur.reservar(estado);
+                    tur.reservarTurno(asig.getPersonalCientifico());
                 }
             }
             asig.setTurno(turno);

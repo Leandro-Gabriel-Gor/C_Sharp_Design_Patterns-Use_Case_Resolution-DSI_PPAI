@@ -19,6 +19,10 @@ namespace PPAI_DSI.Entidades
             this.estado = estado;
         }
 
+        public CambioEstadoTurno()
+        {
+        }
+
         internal bool esActual()
         {
             return fechaHoraHasta == null;

@@ -9,7 +9,7 @@ namespace PPAI_DSI.Estados
 {
     public class Disponible : Estado
     {
-        public Disponible(string nombre, string descripcion, string ambito, bool esReservable, bool esCancelable) : base(nombre, descripcion, ambito, esReservable, esCancelable)
+        public Disponible(string nombre, string descripcion, string ambito) : base(nombre, descripcion, ambito)
         {
         }
 

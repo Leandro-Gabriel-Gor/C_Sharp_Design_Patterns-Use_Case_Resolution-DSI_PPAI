@@ -99,20 +99,20 @@ namespace PPAI_DSI
 
             /* ----------- ESTADOS -----------*/
             /* Turno */
-            Disponible estadoTurno = new Disponible(
-                "Disponible", "El Turno se encuentra disponible para ser reservado.", "Turno", true, false);
+            Estado estadoTurno = new DisponibleT(
+                "Disponible", "El Turno se encuentra disponible para ser reservado.", "Turno");
             Estado estadoTurno1 = new Estado(
-                "Reserva Pendiente", "La reserva del turno se encuentra pendiente de confirmación.", "Turno", true, false);
+                "Reserva Pendiente", "La reserva del turno se encuentra pendiente de confirmación.", "Turno");
             Estado estadoTurno2 = new Estado(
-                "Reservado", "El turno ha sido reservado por un personal científico", "Turno", true, false);
+                "Reservado", "El turno ha sido reservado por un personal científico", "Turno");
 
             /* RT */
 
-            Estado estadoRT = new Estado(
-                "Disponible", "El RT se encuentra disponible para su uso", "RT", true, false);
+            Estado estadoRT = new Disponible(
+                "Disponible", "El Turno se encuentra disponible para ser reservado.", "Turno");
 
             Estado estadoRT1 = new Estado(
-                "Inicio Mantenimiento", "El RT no se encuentra disponible para su uso", "RT", true, false);
+                "Inicio Mantenimiento", "El RT no se encuentra disponible para su uso", "RT");
 
 
             /* ----------- CAMBIO ESTADO -----------*/
@@ -122,9 +122,7 @@ namespace PPAI_DSI
                 DateTime.Parse("13/6/2023 7:43:53"),
                 estadoTurno);
 
-            CambioEstadoTurno cambioEstadoTurno1 = new CambioEstadoTurno(
-                DateTime.Parse("17/11/2023 19:13:34"),
-                estadoTurno);
+         
 
             CambioEstadoTurno cambioEstadoTurnoReservado = new CambioEstadoTurno(
                 DateTime.Parse("17/11/2023 19:13:34"),
@@ -132,18 +130,13 @@ namespace PPAI_DSI
 
 
 
-            CambioEstadoTurno cambioEstadoTurno2 = new CambioEstadoTurno(
-                DateTime.Parse("18/11/2023 19:13:34"),
-                estadoTurno);
+          
 
-            CambioEstadoTurno cambioEstadoTurno3 = new CambioEstadoTurno(
+            CambioEstadoTurno cambioEstadoTurno1 = new CambioEstadoTurno(
                 DateTime.Parse("14/05/2019 20:00:01"),
                 estadoTurno1);
 
-            CambioEstadoTurno cambioEstadoTurno4 = new CambioEstadoTurno(
-                DateTime.Parse("04/03/2002 11:11:11"),
-                estadoTurno2);
-
+          
             /* RT */
 
             CambioEstadoRT cambioEstadoRT = new CambioEstadoRT(
@@ -152,11 +145,11 @@ namespace PPAI_DSI
             CambioEstadoRT cambioEstadoRT2 = new CambioEstadoRT(
                 DateTime.Parse("19/3/2021 20:04:14"), estadoRT1);
 
-            CambioEstadoRT cambioEstadoRT3 = new CambioEstadoRT(
-                DateTime.Parse("15/8/2030 12:03:11"), estadoRT1);
+            //CambioEstadoRT cambioEstadoRT3 = new CambioEstadoRT(
+            //    DateTime.Parse("15/8/2030 12:03:11"), estadoRT);
 
-            CambioEstadoRT cambioEstadoRT4 = new CambioEstadoRT(
-                DateTime.Parse("19/3/2021 08:09:27"), estadoRT1);
+            //CambioEstadoRT cambioEstadoRT4 = new CambioEstadoRT(
+            //    DateTime.Parse("19/3/2021 08:09:27"), estadoRT1);
 
             /* ----------- TURNOS -----------*/
 
@@ -165,61 +158,70 @@ namespace PPAI_DSI
                 DateTime.Now,
                 "viernes",
                 DateTime.Now,
-                new List<CambioEstadoTurno> { cambioEstadoTurno });
+                new List<CambioEstadoTurno> { cambioEstadoTurno },
+                estadoTurno);
 
             Turno turno1 = new Turno(
                 DateTime.Parse("06/01/2024 6:34:53"),
                 DateTime.Parse("06/01/2024 8:37:04"),
                 "Miercoles",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno1 }
+                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno1 },
+                estadoTurno
                 );
             Turno turnoReservado1 = new Turno(
                 DateTime.Parse("06/01/2024 10:34:53"),
                 DateTime.Parse("06/01/2024 12:37:04"),
                 "Miercoles",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado }
+                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
+                estadoTurno2
                 );
 
             Turno turno2 = new Turno(
                 DateTime.Parse("07/01/2024 16:34:53"),
                 DateTime.Parse("07/01/2024 18:37:04"),
                 "Jueves",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno2 }
+                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
+                estadoTurno2
                 );
 
             Turno turno3 = new Turno(
                 DateTime.Parse("03/12/2024 16:34:53"),
                 DateTime.Parse("03/12/2024 8:37:04"),
                 "Lunes",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno3 }
+                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
+                estadoTurno
                 );
 
             Turno turno4 = new Turno(
                 DateTime.Parse("03/12/2024 9:30:53"),
                 DateTime.Parse("03/12/2024 9:37:04"),
                 "Martes",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno4 }
+                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
+                estadoTurno
                 );
 
             Turno turno5 = new Turno(
                 DateTime.Parse("03/11/2025 9:30:00"),
                 DateTime.Parse("03/11/2025 9:40:00"),
                 "Sábado",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno3 }
+                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
+                estadoTurno
                 );
 
             Turno turno6 = new Turno(
                 DateTime.Parse("08/06/2026 9:30:53"),
                 DateTime.Parse("08/06/2026 10:37:00"),
                 "Lunes",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno4 }
+                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno },
+                estadoTurno
                 );
 
             Turno turno7 = new Turno(
                 DateTime.Parse("03/12/2024 10:30:53"),
                 DateTime.Parse("03/12/2024 11:37:04"),
                 "Miercoles",
-                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurno2 }
+                DateTime.Now, new List<CambioEstadoTurno> { cambioEstadoTurnoReservado },
+                estadoTurno2
                 );
 
             /* ----------- RECURSOS TECNOLOGICOS -----------*/
@@ -315,7 +317,7 @@ namespace PPAI_DSI
                 tipoRT5,
                 new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
                 modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT });
+                new List<CambioEstadoRT> { cambioEstadoRT2 });
 
             /* ----------- Personal Cientifico -----------*/
 

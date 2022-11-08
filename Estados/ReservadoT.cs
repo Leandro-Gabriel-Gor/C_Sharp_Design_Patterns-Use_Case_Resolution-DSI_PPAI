@@ -10,7 +10,7 @@ namespace PPAI_DSI.Estados
     public class ReservadoT : Estado
     {
 
-        public ReservadoT(string nombre, string descripcion, string ambito, bool esReservable, bool esCancelable) : base(nombre, descripcion, ambito, esReservable, esCancelable)
+        public ReservadoT(string nombre, string descripcion, string ambito) : base(nombre, descripcion, ambito)
         {
         }
     }

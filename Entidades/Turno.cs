@@ -13,14 +13,18 @@ namespace PPAI_DSI.Entidades
         private string diaSemana { get; set; }
         private DateTime fechaGeneracion { get; set; }
         private List<CambioEstadoTurno> cambioEstadoTurno {get; set; }
+        internal Estado estadoActual { get; set; }
 
-        public Turno(DateTime fechaHoraInicio, DateTime fechaHoraFin, string diaSemana, DateTime fechaGeneracion, List<CambioEstadoTurno> cambioEstadoTurno)
+
+
+        public Turno(DateTime fechaHoraInicio, DateTime fechaHoraFin, string diaSemana, DateTime fechaGeneracion, List<CambioEstadoTurno> cambioEstadoTurno, Estado estadoActual )
         {
             this.fechaHoraInicio = fechaHoraInicio;
             this.fechaHoraFin = fechaHoraFin;
             this.diaSemana = diaSemana;
             this.fechaGeneracion = fechaGeneracion;
             this.cambioEstadoTurno = cambioEstadoTurno;
+            this.estadoActual = estadoActual;
         }
 
         internal bool esPosteriorAFecha(DateTime fecha)
@@ -49,17 +53,19 @@ namespace PPAI_DSI.Entidades
             return fechaHoraInicio;
         }
 
-        internal void reservar(Estado estado)
+        internal void reservarTurno(PersonalCientiico ci)
         {
-            foreach (var CEturno in cambioEstadoTurno)
-            {
-                if (CEturno.esActual())
-                {
-                    CEturno.setFechaHoraHasta();
-                }
-            }
+            //foreach (var CEturno in cambioEstadoTurno)
+            //{
+            //    if (CEturno.esActual())
+            //    {
+            //        CEturno.setFechaHoraHasta();
+            //    }
+            //}
 
-            this.cambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, estado));
+            //this.cambioEstadoTurno.Add(new CambioEstadoTurno(DateTime.Now, estado));
+
+            estadoActual.reservarTurno(this, ci, cambioEstadoTurno);
         }
 
         public string getStrTurno()

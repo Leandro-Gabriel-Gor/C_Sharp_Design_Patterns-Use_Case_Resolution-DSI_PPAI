@@ -9,21 +9,24 @@ namespace PPAI_DSI.Estados
 {
     public class DisponibleT : Estado
     {
-        DisponibleT(string nombre, string descripcion, string ambito, bool esReservable, bool esCancelable) : base(nombre, descripcion, ambito, esReservable, esCancelable)
+        public DisponibleT(string nombre, string descripcion, string ambito) : base(nombre, descripcion, ambito)
         {
         }
 
-        public void reservarTurno(Turno turnoSeleccionado, PersonalCientiico ci, List<CambioEstadoTurno> cambioEstados) {
+        public override void reservarTurno(Turno turnoSeleccionado, PersonalCientiico ci, List<CambioEstadoTurno> cambioEstados) {
+            //listaCET = BD.traerlistaid(id Turno)
             CambioEstadoTurno actualCET = buscarCambioEstadoActual(cambioEstados);
             actualCET.setFechaHoraHasta();
             Estado nuevoEstado = crearEstadoNuevo();
+            CambioEstadoTurno nuevoCET = new CambioEstadoTurno(DateTime.Now, nuevoEstado);
+            turnoSeleccionado.agregarCambioEstadoTurno(nuevoCET);
 
         }
 
         public Estado crearEstadoNuevo()
         {
             return new ReservadoT(
-                "Reserva Pendiente", "La reserva del turno se encuentra pendiente de confirmación.", "Turno", true, false);
+                "Reserva Pendiente", "La reserva del turno se encuentra pendiente de confirmación.", "Turno");
         }
 
         public CambioEstadoTurno buscarCambioEstadoActual(List<CambioEstadoTurno> cambioEstadoTurno)

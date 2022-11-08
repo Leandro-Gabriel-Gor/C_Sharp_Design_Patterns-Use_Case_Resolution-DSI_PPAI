@@ -11,16 +11,14 @@ namespace PPAI_DSI.Entidades
         internal string nombre { get; set; }
         internal string descripcion { get; set; }
         internal string ambito { get; set; }
-        internal bool esReservable { get; set; }
-        internal bool esCancelable { get; set; }
+        
 
-        public Estado(string nombre, string descripcion, string ambito, bool esReservable, bool esCancelable)
+        public Estado(string nombre, string descripcion, string ambito)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.ambito = ambito;
-            this.esReservable = esReservable;
-            this.esCancelable = esCancelable;
+            
         }
         public Estado()
         {
@@ -28,7 +26,7 @@ namespace PPAI_DSI.Entidades
         }
         public virtual bool esReservable1()
         {
-            return false;
+            return true;
         }
 
         public string getNombre()
@@ -44,6 +42,11 @@ namespace PPAI_DSI.Entidades
         public bool esReservado()
         {
             return this.nombre.Equals("Reservado");
+        }
+
+        public virtual void reservarTurno(Turno turnoSeleccionado, PersonalCientiico ci, List<CambioEstadoTurno> cambioEstados)
+        {
+            throw new NotImplementedException();
         }
     }
 }
