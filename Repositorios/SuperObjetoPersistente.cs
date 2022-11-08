@@ -3,6 +3,7 @@ using PPAI_DSI.Estados;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Runtime.ConstrainedExecution;
 
 namespace PPAI_DSI.Repositorios
 {
@@ -39,8 +40,8 @@ namespace PPAI_DSI.Repositorios
                 $"SELECT RT.numeroRT, RT.fechaAlta, RT.imagenes," +
                 $" RT.periodicidadMantenimientoPrev, RT.duracionMantenimientoPrev," +
                 $"TRT.nombre as nombreTRT, TRT.descripcion, M.nombre as nombreM " +
-                $"FROM RecursoTecnologico RT JOIN TipoRecursoTecnologico TRT JOIN Modelo M " +
-                $"WHERE RT.idTipoRecursoTecnologico = TRT.id and M.id = RT.idModelo";
+                $"FROM RecursoTecnologico RT, TipoRecursoTecnologico TRT, Modelo M " +
+                $"WHERE RT.idTipoRecursoTecnologico = TRT.id AND M.id = RT.idModelo";
 
             //esa sentencia esta mal
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
@@ -49,7 +50,7 @@ namespace PPAI_DSI.Repositorios
                 var RT = new RecursoTecnologico(
                     int.Parse(fila["numeroRT"].ToString()),
                     DateTime.Parse(fila["fechaAlta"].ToString()),
-                    fila["imagen"].ToString(),
+                    fila["imagenes"].ToString(),
                     int.Parse(fila["periodicidadMantenimientoPrev"].ToString()),
                     int.Parse(fila["duracionMantenimientoPrev"].ToString()),
                     new TipoRecursoTecnologico(fila["nombreTRT"].ToString(), fila["descripcion"].ToString(), caracteristicas),
@@ -67,7 +68,7 @@ namespace PPAI_DSI.Repositorios
         public List<Turno> GetTurnosXRecurso(int idRecurso)
         {
             List<Turno> turnos = new List<Turno>();
-            var sentenciaSql = $"SELECT * FROM Turno T JOIN Estado E WHERE T.nombreEstado = E.nombre and T.ambitoEstado = E.ambito and T.idRecurso = {idRecurso}";
+            var sentenciaSql = $"SELECT * FROM Turno T, Estado E WHERE T.nombreEstado = E.nombre and T.ambitoEstado = E.ambito and T.nroRT = {idRecurso}";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
             foreach (DataRow fila in tablaResultado.Rows)
             {
@@ -104,22 +105,32 @@ namespace PPAI_DSI.Repositorios
             foreach (DataRow fila in tablaResultado.Rows)
             {
                 Estado estado = new Estado();
-                switch (fila["nombre"].ToString())
+                switch (fila["nombreEstado"].ToString())
                 {
                     case "Disponible":
-                        estado = new DisponibleT(fila["estado"].ToString(), fila["descripcion"].ToString(), fila["ambito"].ToString());
+                        estado = new DisponibleT(fila["nombreEstado"].ToString(), "descripcion", fila["ambitoEstado"].ToString());
                         break;
                     case "Reservado":
-                        estado = new ReservadoT(fila["estado"].ToString(), fila["descripcion"].ToString(), fila["ambito"].ToString());
+                        estado = new ReservadoT(fila["nombreEstado"].ToString(), "descripcion", fila["ambitoEstado"].ToString());
                         break;
                 }
-
-                var CET = new CambioEstadoTurno(
+                if (fila["fechahorahasta"] is DBNull)
+                {
+                    var CET = new CambioEstadoTurno(
+                    DateTime.Parse(fila["fechaHoraDesde"].ToString()),
+                    estado
+                    );
+                    cambios.Add(CET);
+                }
+                else {
+                    var CET = new CambioEstadoTurno(
                     DateTime.Parse(fila["fechaHoraDesde"].ToString()),
                     DateTime.Parse(fila["fechahorahasta"].ToString()),
                     estado
                     );
-                cambios.Add(CET);
+                    cambios.Add(CET);
+                }
+                
             }
 
             return cambios;
@@ -164,7 +175,7 @@ namespace PPAI_DSI.Repositorios
             var recursosTecnologicos = new List<RecursoTecnologico>();
             var sentenciaSql = $"SELECT RT.numeroRT, RT.fechaAlta, RT.imagen, RT.periodicidadMantenimientoPrev, RT.duracionMantenimientoPrev," +
                 $"TRT.nombre as nombreTRT, TRT.descripcion, M.nombre as nombreM " +
-                $"FROM RecursoTecnologico RT JOIN TipoRecursoTecnologico TRT JOIN Modelo M JOIN CentroDeInvestigacion CI " +
+                $"FROM RecursoTecnologico RT, TipoRecursoTecnologico TRT, Modelo M, CentroDeInvestigacion CI " +
                 $"WHERE RT.idTipoRecursoTecnologico = TRT.id and M.id = RT.idModelo and CI.idRecursoTecnologico = RT.numeroRT and CI.id = {id}";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
             foreach (DataRow fila in tablaResultado.Rows)
@@ -234,7 +245,7 @@ namespace PPAI_DSI.Repositorios
         internal List<PersonalCientiico> getPCBD()
         {
             var modelos = new List<PersonalCientiico>();
-            var sentenciaSql = $"SELECT * FROM PersonalCientifico PC JOIN Usuario U WHERE PC.idUsuario = U.id";
+            var sentenciaSql = $"SELECT * FROM PersonalCientifico PC, Usuario U WHERE PC.idUsuario = U.id";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
             foreach (DataRow fila in tablaResultado.Rows)
             {
@@ -253,6 +264,15 @@ namespace PPAI_DSI.Repositorios
                 modelos.Add(personalCientifico);
             }
             return modelos;
+        }
+
+
+        public void fechafinCET(CambioEstadoRT cet)
+        {
+            var sentenciaSql = $"UPDATE CambioEstadoRT SET fechaHoraHasta = {DateTime.Today}" +
+                $"WHERE ";
+            DBHelper.GetDBHelper().EjecutarSQL(sentenciaSql);
+
         }
     }
 }

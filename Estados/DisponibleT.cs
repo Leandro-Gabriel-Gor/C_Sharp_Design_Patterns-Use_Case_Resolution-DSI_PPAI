@@ -17,6 +17,7 @@ namespace PPAI_DSI.Estados
             //listaCET = BD.traerlistaid(id Turno)
             CambioEstadoTurno actualCET = buscarCambioEstadoActual(cambioEstados);
             actualCET.setFechaHoraHasta();
+
             Estado nuevoEstado = crearEstadoNuevo();
             CambioEstadoTurno nuevoCET = new CambioEstadoTurno(DateTime.Now, nuevoEstado);
             turnoSeleccionado.agregarCambioEstadoTurno(nuevoCET);

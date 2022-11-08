@@ -43,6 +43,7 @@ namespace PPAI_DSI.Entidades
         internal void setFechaHoraHasta()
         {
             fechaHoraHasta = DateTime.Now;
+
         }
     }
 }

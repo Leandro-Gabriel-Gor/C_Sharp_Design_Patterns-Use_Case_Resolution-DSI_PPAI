@@ -20,7 +20,6 @@ namespace PPAI_DSI.Entidades
         private List<Marca> marcaBD { get; set; }
         private List<CentroDeInvestigacion> centroInvestigacionBD { get; set; }
         private List<PersonalCientiico> cientificosBD { get; set; }
-        private List<Estado> estadosBD { get; set; }
         private List<Turno> turnos { get; set; }
         private List<List<Turno>> matrizTurnos { get; set; }
         private AsignacionCientificoDelCl asignacionCI { get; set; }
@@ -30,7 +29,7 @@ namespace PPAI_DSI.Entidades
         public GestorReservaTurno(List<RecursoTecnologico> recursos, Sesion sesion, List<TipoRecursoTecnologico> tiposRT,
             DateTime fecha, Turno turno, bool controlInvestigacionRT, List<TipoRecursoTecnologico> tiposRTSeleccionados,
             List<TipoRecursoTecnologico> tiposRTseleccionadosBD, List<RecursoTecnologico> recursosbd, List<Marca> marcaBD,
-            List<CentroDeInvestigacion> centroInvestigacionBD, List<PersonalCientiico> cientificosBD, List<Estado> estadosBD)
+            List<CentroDeInvestigacion> centroInvestigacionBD, List<PersonalCientiico> cientificosBD)
         {
             this.recursos = recursos;
             this.sesion = sesion;
@@ -44,7 +43,6 @@ namespace PPAI_DSI.Entidades
             this.marcaBD = marcaBD;
             this.centroInvestigacionBD = centroInvestigacionBD;
             this.cientificosBD = cientificosBD;
-            this.estadosBD = estadosBD;
             this.matrizTurnos = new List<List<Turno>>();
             this.asignacionCI = new AsignacionCientificoDelCl();
             //tiposRTRepositorio = new TiposRTRepositorio();
@@ -53,11 +51,11 @@ namespace PPAI_DSI.Entidades
         public GestorReservaTurno(Sesion sesion)
         {
             this.sesion = sesion;
-            this.tiposRT = sop.getRTBD();//Hecho
+            this.tiposRT = sop.getRTBD();//Hecho V
             this.recursosbd = sop.getRecursosBD();//Hecho
-            //this.centroInvestigacionBD = sop.getCIBD();
+            //this.centroInvestigacionBD = sop.getCIBD(); X
             this.marcaBD = sop.getMarcaBD();//Hecho
-            this.estadosBD = sop.getEstadosBD();//Empezado
+         
             this.cientificosBD = sop.getPCBD();//Hecho
         }
 
@@ -234,21 +232,7 @@ namespace PPAI_DSI.Entidades
             this.recursoTSeleccionado(RTindex).reservarTurno(turnoSelec, asignacionCI);
         }
 
-        private Estado obtenerEstadoReservado()
-        {
-            foreach (Estado est in estadosBD)
-            {
-                if (est.esAmbitoTurno())
-                {
-                    if (est.esReservado())
-                    {
-                        return est;
-                    }
-                }
-            }
-            return new Estado();
-        }
-
+       
         private Turno obtenerTurnoSeleccionado(int indexT, int indexFecha)
         {
             return matrizTurnos[indexFecha][indexT];

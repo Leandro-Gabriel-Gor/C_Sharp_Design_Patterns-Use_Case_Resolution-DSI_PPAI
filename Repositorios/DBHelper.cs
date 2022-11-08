@@ -55,7 +55,7 @@ namespace PPAI_DSI.Repositorios
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Ocurrio un problema desconocido con el almacenamento de datos");
+                throw ex;
             }
 
         }
