@@ -183,8 +183,5 @@
   <ItemGroup>
     <None Include="Resources\pngwing.com %287%291.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Repositorios\readme.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

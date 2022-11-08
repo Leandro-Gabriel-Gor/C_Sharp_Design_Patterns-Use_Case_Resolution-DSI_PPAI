@@ -19,6 +19,13 @@ namespace PPAI_DSI.Entidades
             this.estado = estado;
         }
 
+        public CambioEstadoTurno(DateTime fechaHoraDesde, DateTime fechaHoraHasta, Estado estado)
+        {
+            this.fechaHoraDesde = fechaHoraDesde;
+            this.fechaHoraHasta = fechaHoraHasta;
+            this.estado = estado;
+        }
+
         public CambioEstadoTurno()
         {
         }
