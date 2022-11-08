@@ -235,7 +235,8 @@ namespace PPAI_DSI
                 tipoRT1,
                 new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
                 modelo1,
-                new List<CambioEstadoRT> { cambioEstadoRT });
+                new List<CambioEstadoRT> { cambioEstadoRT },
+                estadoRT);
 
             RecursoTecnologico rt = new RecursoTecnologico
                 (400,
@@ -246,7 +247,8 @@ namespace PPAI_DSI
                 tipoRT1,
                 new List<Turno> { turno1, turno2, turno3, turno4, turnoReservado1 },
                 modelo2,
-                new List<CambioEstadoRT> { cambioEstadoRT }
+                new List<CambioEstadoRT> { cambioEstadoRT },
+                estadoRT
                 );
 
             RecursoTecnologico rt2 = new RecursoTecnologico
@@ -258,7 +260,8 @@ namespace PPAI_DSI
                 tipoRT3,
                 new List<Turno> { turno2, turno4, turno3, turno7, turnoReservado1 },
                 modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT }
+                new List<CambioEstadoRT> { cambioEstadoRT },
+                estadoRT
                 );
 
             RecursoTecnologico rt3 = new RecursoTecnologico
@@ -270,7 +273,8 @@ namespace PPAI_DSI
                 tipoRT3,
                 new List<Turno> { turno1, turno2, turno3, turno4, turno6, turnoReservado1 },
                 modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT, cambioEstadoRT2 }
+                new List<CambioEstadoRT> { cambioEstadoRT, cambioEstadoRT2 },
+                estadoRT
                 );
 
             RecursoTecnologico rt4 = new RecursoTecnologico
@@ -282,7 +286,8 @@ namespace PPAI_DSI
                 tipoRT2,
                 new List<Turno> { turno, turno3, turno6, turno7, turnoReservado1 },
                 modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT }
+                new List<CambioEstadoRT> { cambioEstadoRT },
+                estadoRT
                 );
 
             RecursoTecnologico rt5 = new RecursoTecnologico
@@ -294,7 +299,8 @@ namespace PPAI_DSI
                 tipoRT3,
                 new List<Turno> { turnoReservado1 },
                 modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT2 }
+                new List<CambioEstadoRT> { cambioEstadoRT2 },
+                estadoRT1
                 );
 
             RecursoTecnologico recT6 = new RecursoTecnologico
@@ -306,7 +312,8 @@ namespace PPAI_DSI
                 tipoRT4,
                 new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
                 modelo2,
-                new List<CambioEstadoRT> { cambioEstadoRT });
+                new List<CambioEstadoRT> { cambioEstadoRT },
+                estadoRT);
 
             RecursoTecnologico recT7 = new RecursoTecnologico
                 (15,
@@ -317,7 +324,8 @@ namespace PPAI_DSI
                 tipoRT5,
                 new List<Turno> { turno1, turnoReservado1, turno3, turno2 },
                 modelo3,
-                new List<CambioEstadoRT> { cambioEstadoRT2 });
+                new List<CambioEstadoRT> { cambioEstadoRT2 },
+                estadoRT1);
 
             /* ----------- Personal Cientifico -----------*/
 
@@ -490,7 +498,7 @@ namespace PPAI_DSI
         private void tomarSeleccionRT(object sender, EventArgs e)
         {
             gestor.tomarSeleccionRT(indexRT, this);
-            btnSelecFecha.Enabled = true;
+            btnSelecFecha.Enabled = false;
             btnSeleccionRecurso.Enabled = false;
         }
 
@@ -541,8 +549,8 @@ namespace PPAI_DSI
                     case "Disponible":
                         dgvTurnos.Rows[i].DefaultCellStyle.BackColor = Color.DodgerBlue;
                         break;
-                    case "Pendiente":
-                        dgvTurnos.Rows[i].DefaultCellStyle.BackColor = Color.Gray;
+                    case "Reserva Pendiente":
+                        dgvTurnos.Rows[i].DefaultCellStyle.BackColor = Color.DarkGray;
                         break;
                     case "Reservado":
                         dgvTurnos.Rows[i].DefaultCellStyle.BackColor = Color.Red;

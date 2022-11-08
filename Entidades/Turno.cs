@@ -42,7 +42,7 @@ namespace PPAI_DSI.Entidades
                     turno.Add(this.diaSemana);
                     turno.Add(this.fechaHoraInicio.ToString());
                     turno.Add(this.fechaHoraFin.ToString());
-                    turno.Add(CEturno.mostrarEstado());
+                    turno.Add(this.estadoActual.getNombre());
                 }
             }
             return turno;
@@ -78,6 +78,11 @@ namespace PPAI_DSI.Entidades
         public void agregarCambioEstadoTurno(CambioEstadoTurno c)
         {
             this.cambioEstadoTurno.Add(c);
+        }
+
+        internal void setEstado(Estado nuevoEstado)
+        {
+            estadoActual = nuevoEstado;
         }
     }
 }

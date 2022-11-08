@@ -84,34 +84,34 @@ namespace PPAI_DSI.Entidades
                 tiposRTSeleccionados.Add(tiposRTBD[indice]);
             }
 
+            
+            this.obtenerRTActivoDeTipoRT();
             List<RecursoTecnologico> rec = recursos;
-            List<CambioEstadoRT> CEActuales = this.obtenerRTActivoDeTipoRT();
             List<List<string>> mostrarDatos = new List<List<string>>();
 
             for (int i = 0; i < rec.Count - val; i++)
             {
-                mostrarDatos.Add(rec[i].mostrarDatos(CEActuales[i], centroInvestigacionBD, marcaBD));
+                mostrarDatos.Add(rec[i].mostrarDatos(centroInvestigacionBD, marcaBD));
             }
             val = rec.Count;
             mostrarDatos = this.ordenarYAgruparRT(mostrarDatos);
             boundary.pedirSeleccionRT(mostrarDatos);
         }
 
-        public List<CambioEstadoRT> obtenerRTActivoDeTipoRT()
+        public void obtenerRTActivoDeTipoRT()
         {
-            List<CambioEstadoRT> CEActuales = new List<CambioEstadoRT> { };
             foreach (TipoRecursoTecnologico tipo in tiposRTSeleccionados)
             {
                 foreach (RecursoTecnologico rec in recursosbd)
                 {
-                    if (rec.esDeTipoRT(tipo) && rec.esActivo().esEstadoActualReservable())
+                    if (rec.esDeTipoRT(tipo) && rec.esActivo())
                     {
                         recursos.Add(rec);
-                        CEActuales.Add(rec.esActivo());
+                        
                     }
                 }
             }
-            return CEActuales;
+            
         }
 
         public List<List<string>> ordenarYAgruparRT(List<List<string>> mostrarDatos)
@@ -128,7 +128,7 @@ namespace PPAI_DSI.Entidades
             {
                 turnosReservables = this.obtenerTurnosReservablesRTSeleccionado(index);
             }
-            List<List<List<string>>> cuboFechas = this.agruparYOrdenarTurnos(turnosReservables); // Creacion del cubo
+            List<List<List<string>>> cuboFechas = this.agruparYOrdenarTurnos(turnosReservables); // Creacion del cubo |_|
             List<bool> disponibilidadFechas = this.determinarDisponibilidadPorFecha(cuboFechas);
             boundary.pedirSeleccionDeTurno(cuboFechas, disponibilidadFechas);
         }
@@ -161,7 +161,7 @@ namespace PPAI_DSI.Entidades
             return DateTime.Today;
         }
 
-        private List<List<List<string>>> agruparYOrdenarTurnos(List<List<string>> turnosReservables)
+        private List<List<List<string>>> agruparYOrdenarTurnos(List<List<string>> turnosReservables) // |_|
         {
             List<List<List<string>>> resultado = new List<List<List<string>>>();
 

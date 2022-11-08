@@ -17,9 +17,12 @@ namespace PPAI_DSI.Entidades
         private List<Turno> turnos { get; set; }
         private Modelo modeloDelRT { get; set; }
         public List<CambioEstadoRT> cambioEstadoRT { get; set; }
+        internal Estado estadoActual { get; set; }
 
 
-        public RecursoTecnologico(int numeroRT, DateTime fechaAlta, string imagen, int periodicidadMantenimientoPrev, int duracionMantenimientoPrev, TipoRecursoTecnologico tipoRecursoT, List<Turno> turno, Modelo modeloDelRT, List<CambioEstadoRT> cambioEstadoRT)
+
+        public RecursoTecnologico(int numeroRT, DateTime fechaAlta, string imagen, int periodicidadMantenimientoPrev, int duracionMantenimientoPrev, 
+            TipoRecursoTecnologico tipoRecursoT, List<Turno> turno, Modelo modeloDelRT, List<CambioEstadoRT> cambioEstadoRT, Estado estadoActual)
         {
             this.numeroRT = numeroRT;
             this.fechaAlta = fechaAlta;
@@ -30,6 +33,7 @@ namespace PPAI_DSI.Entidades
             this.turnos = turno;
             this.modeloDelRT = modeloDelRT;
             this.cambioEstadoRT = cambioEstadoRT;
+            this.estadoActual = estadoActual;
         }
 
         public TipoRecursoTecnologico getTipoRecursoT()
@@ -42,19 +46,9 @@ namespace PPAI_DSI.Entidades
             return this.getTipoRecursoT() == tipo;
         }
 
-        public CambioEstadoRT esActivo()
+        public bool esActivo()
         {
-            CambioEstadoRT CEActivo = null;
-            foreach (CambioEstadoRT cambioEstado in this.cambioEstadoRT)
-            {
-
-                if (cambioEstado.esActual())
-                {
-                    CEActivo = cambioEstado;
-                }
-            }
-
-            return CEActivo;
+            return estadoActual.esReservable1();
         }
 
         private List<string> mostrarMarcaYModelo(List<Marca> marcaBD)
@@ -63,11 +57,11 @@ namespace PPAI_DSI.Entidades
         }
 
 
-        public List<string> mostrarDatos(CambioEstadoRT cambioEstadoRT, List<CentroDeInvestigacion> centroInvestigacionBD, List<Marca> marcaBD)
+        public List<string> mostrarDatos( List<CentroDeInvestigacion> centroInvestigacionBD, List<Marca> marcaBD)
         {
             List<string> res = new List<string>();
 
-            res.Add(cambioEstadoRT.mostrarEstado());
+            res.Add(estadoActual.getNombre());
             res.Add(this.mostrarCI(centroInvestigacionBD));
             List<string> marcaYModelo = this.mostrarMarcaYModelo(marcaBD);
 
@@ -115,7 +109,7 @@ namespace PPAI_DSI.Entidades
             return lista;
         }
 
-        public void reservarTurno(Turno turno, Estado estado, AsignacionCientificoDelCl asig)
+        public void reservarTurno(Turno turno, AsignacionCientificoDelCl asig)
         {
             foreach(Turno tur in turnos)
             {
@@ -136,5 +130,16 @@ namespace PPAI_DSI.Entidades
             }
             return result;
         }
+
+        internal string getEstadoActual()
+        {
+            return estadoActual.getNombre();
+        }
+
+        public  string toString()
+        {
+            return $"+ Numero RT: {numeroRT} \n" +
+                $"+ ";
+        }
     }
-}
+}      

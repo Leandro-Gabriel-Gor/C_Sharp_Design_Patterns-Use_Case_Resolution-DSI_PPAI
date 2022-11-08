@@ -20,6 +20,7 @@ namespace PPAI_DSI.Estados
             Estado nuevoEstado = crearEstadoNuevo();
             CambioEstadoTurno nuevoCET = new CambioEstadoTurno(DateTime.Now, nuevoEstado);
             turnoSeleccionado.agregarCambioEstadoTurno(nuevoCET);
+            turnoSeleccionado.setEstado(nuevoEstado);
 
         }
 
