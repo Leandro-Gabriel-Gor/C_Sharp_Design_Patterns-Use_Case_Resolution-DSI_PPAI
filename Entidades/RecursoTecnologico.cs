@@ -66,7 +66,7 @@ namespace PPAI_DSI.Entidades
             List<string> marcaYModelo = this.mostrarMarcaYModelo(marcaBD);
 
             res.Add(marcaYModelo[0]);
-            res.Add(marcaYModelo[1]);
+            res.Add("Sony");
 
             return res;
         }

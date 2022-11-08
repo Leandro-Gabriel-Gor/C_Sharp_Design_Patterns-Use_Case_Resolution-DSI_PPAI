@@ -144,46 +144,101 @@ namespace PPAI_DSI.Repositorios
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
             foreach (DataRow fila in tablaResultado.Rows)
             {
-                //var centro = new CentroDeInvestigacion(
-                //    fila["nombre"].ToString(),
-                //    fila["sigla"].ToString(),
-                //    fila["direccion"].ToString(),
-                //    fila["edificio"].ToString(),
-                //    Convert.ToInt32(fila["piso"]),
-                //    Convert.ToInt32(fila["coordenadas"]),
-                //    Convert.ToInt32(fila["telefonoContacto"]),
-                //    fila["mail"].ToString(),
-                //    Convert.ToInt32(fila["numeroResolucionCreacion"]),
-                //    DateTime.Parse(fila["fechaResolucionCreacion"].ToString()),
-                //    fila["reglamento"].ToString(),
-                //    fila["caracteristicasGenerales"].ToString(),
-                //    DateTime.Parse(fila["fechaAlta"].ToString()),
-                //    fila["motivoBaja"],
-                //    Convert.ToInt32(fila["tiempoAntelacionReserva"]),
-                //    GetRecursosXCI(fila["id"].ToString()));
-                //    //GetAsignacionCientificosDelCI()));
+                var centro = new CentroDeInvestigacion(
+                    fila["nombre"].ToString(),
+                    fila["sigla"].ToString(),
+                    fila["direccion"].ToString(),
+                    fila["edificio"].ToString(),
+                    Convert.ToInt32(fila["piso"]),
+                    "coordenadas",
+                    Convert.ToInt32(fila["telefonoContacto"]),
+                    fila["mail"].ToString(),
+                    1,
+                    DateTime.Today,
+                    "reglamento",
+                    "caracteristicasGenerales",
+                    DateTime.Today,
+                    DateTime.Today,
+                    "motivoBaja",
+                    DateTime.Today,
+                    GetAsignacionCientificosDelCI(fila["id"].ToString()),
+                    GetRecursosXCI(fila["id"].ToString())
+                    );
+                    
+                
 
-                //centros.Add(centro);
+                centros.Add(centro);
             }
-            return centros; ;
+            return centros;
         }
 
-        private object GetRecursosXCI(string id)
+        private List<AsignacionCientificoDelCl> GetAsignacionCientificosDelCI(string idCi)
+        {
+            var centros = new List<AsignacionCientificoDelCl>();
+            var sentenciaSql = $"SELECT * FROM AsignacionCientificoDelCI WHERE idCI = {idCi}";
+            var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
+            foreach (DataRow fila in tablaResultado.Rows)
+            {
+                var centro = new AsignacionCientificoDelCl(
+                    DateTime.Parse(fila["fechaDesde"].ToString()),
+                    DateTime.Parse(fila["fechaHasta"].ToString()),
+                    getPCBDxid(fila["idCI"].ToString()),
+                    new List<Turno>()
+
+
+                    ) ;
+
+
+
+                centros.Add(centro);
+            }
+            return centros;
+        }
+
+        private PersonalCientiico getPCBDxid(string v)
+        {
+            
+            var sentenciaSql = $"SELECT * FROM PersonalCientifico Where legajo={v}";
+            var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
+            
+
+            foreach (DataRow fila in tablaResultado.Rows)
+            {
+                var personalCientifico = new PersonalCientiico(
+                    fila["legajo"].ToString(),
+                    fila["nombre"].ToString(),
+                    fila["apellido"].ToString(),
+                    fila["nroDoc"].ToString(),
+                    fila["correoInstitucion"].ToString(),
+                    fila["correoPersonal"].ToString(),
+                    fila["telefonoCelular"].ToString(),
+                    new Usuario(fila["usuario"].ToString(),
+                    fila["contraseña"].ToString(),
+                    true));
+                return personalCientifico;
+
+            }
+            return new PersonalCientiico(); ;
+
+
+        }
+
+        private List<RecursoTecnologico> GetRecursosXCI(string id)
         {
             List<Caracteristica> caracteristicas = new List<Caracteristica>();
             List<CambioEstadoRT> cambiosEstadoRT = new List<CambioEstadoRT>();
             var recursosTecnologicos = new List<RecursoTecnologico>();
-            var sentenciaSql = $"SELECT RT.numeroRT, RT.fechaAlta, RT.imagen, RT.periodicidadMantenimientoPrev, RT.duracionMantenimientoPrev," +
+            var sentenciaSql = $"SELECT RT.numeroRT, RT.fechaAlta, RT.imagenes, RT.periodicidadMantenimientoPrev, RT.duracionMantenimientoPrev," +
                 $"TRT.nombre as nombreTRT, TRT.descripcion, M.nombre as nombreM " +
                 $"FROM RecursoTecnologico RT, TipoRecursoTecnologico TRT, Modelo M, CentroDeInvestigacion CI " +
-                $"WHERE RT.idTipoRecursoTecnologico = TRT.id and M.id = RT.idModelo and CI.idRecursoTecnologico = RT.numeroRT and CI.id = {id}";
+                $"WHERE RT.idTipoRecursoTecnologico = TRT.id and M.id = RT.idModelo and CI.id = RT.idCI and CI.id = {id}";
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
             foreach (DataRow fila in tablaResultado.Rows)
             {
                 var RT = new RecursoTecnologico(
                     int.Parse(fila["numeroRT"].ToString()),
                     DateTime.Parse(fila["fechaAlta"].ToString()),
-                    fila["imagen"].ToString(),
+                    fila["imagenes"].ToString(),
                     int.Parse(fila["periodicidadMantenimientoPrev"].ToString()),
                     int.Parse(fila["duracionMantenimientoPrev"].ToString()),
                     new TipoRecursoTecnologico(fila["nombreTRT"].ToString(), fila["descripcion"].ToString(), caracteristicas),

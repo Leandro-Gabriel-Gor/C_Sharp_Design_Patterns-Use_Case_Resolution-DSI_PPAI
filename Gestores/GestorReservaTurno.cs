@@ -51,7 +51,7 @@ namespace PPAI_DSI.Entidades
         public GestorReservaTurno(Sesion sesion)
         {
             this.sesion = sesion;
-            this.tiposRT = sop.getRTBD();
+            this.tiposRTBD = sop.getRTBD();
             this.recursosbd = sop.getRecursosBD();
             this.centroInvestigacionBD = sop.getCIBD();
             this.marcaBD = sop.getMarcaBD();
@@ -73,10 +73,7 @@ namespace PPAI_DSI.Entidades
 
             // metodo que llena la lista tiposRTBD
             //llamar muchas veces el metodo mostrarTipoRecurso
-            foreach (TipoRecursoTecnologico tipo in tiposRTBD)
-            {
-                tiposRT.Add(tipo.mostrarTipoRecurso());
-            }
+            tiposRT = tiposRTBD;
         }
 
 
@@ -95,7 +92,7 @@ namespace PPAI_DSI.Entidades
 
 
             this.obtenerRTActivoDeTipoRT();
-            List<RecursoTecnologico> rec = recursos;
+            List<RecursoTecnologico> rec = recursosbd;
             List<List<string>> mostrarDatos = new List<List<string>>();
 
             for (int i = 0; i < rec.Count - val; i++)
@@ -155,7 +152,7 @@ namespace PPAI_DSI.Entidades
 
         public RecursoTecnologico recursoTSeleccionado(int index)
         {
-            return recursos[index];
+            return recursosbd[index];
         }
 
         private List<List<string>> obtenerTurnosReservablesRTSeleccionado(int index)
