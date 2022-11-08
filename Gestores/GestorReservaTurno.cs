@@ -51,12 +51,11 @@ namespace PPAI_DSI.Entidades
         public GestorReservaTurno(Sesion sesion)
         {
             this.sesion = sesion;
-            this.tiposRT = sop.getRTBD();//Hecho V
-            this.recursosbd = sop.getRecursosBD();//Hecho
-            //this.centroInvestigacionBD = sop.getCIBD(); X
-            this.marcaBD = sop.getMarcaBD();//Hecho
-         
-            this.cientificosBD = sop.getPCBD();//Hecho
+            this.tiposRT = sop.getRTBD();
+            this.recursosbd = sop.getRecursosBD();
+            this.centroInvestigacionBD = sop.getCIBD();
+            this.marcaBD = sop.getMarcaBD();
+            this.cientificosBD = sop.getPCBD();
         }
 
 

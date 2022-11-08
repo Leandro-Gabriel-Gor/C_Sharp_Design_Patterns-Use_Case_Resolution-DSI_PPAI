@@ -259,8 +259,7 @@ namespace PPAI_DSI.Repositorios
                     fila["telefonoCelular"].ToString(),
                     new Usuario(fila["usuario"].ToString(),
                     fila["contraseña"].ToString(),
-                    bool.Parse(fila["habiilitado"].ToString()))
-                    );
+                    true));
                 modelos.Add(personalCientifico);
             }
             return modelos;
