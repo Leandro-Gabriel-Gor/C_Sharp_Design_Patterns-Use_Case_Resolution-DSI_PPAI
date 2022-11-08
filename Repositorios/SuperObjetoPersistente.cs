@@ -35,8 +35,14 @@ namespace PPAI_DSI.Repositorios
             List<Caracteristica> caracteristicas = new List<Caracteristica>();
             List<CambioEstadoRT> cambiosEstadoRT = new List<CambioEstadoRT>();
             var recursosTecnologicos = new List<RecursoTecnologico>();
-            var sentenciaSql = $"SELECT RT.numeroRT, RT.fechaAlta, RT.imagen, RT.periodicidadMantenimientoPrev, RT.duracionMantenimientoPrev," +
-                $"TRT.nombre as nombreTRT, TRT.descripcion, M.nombre as nombreM FROM RecursoTecnologico RT JOIN TipoRecursoTecnologico TRT JOIN Modelo M WHERE RT.idTipoRecursoTecnologico = TRT.id and M.id = RT.idModelo";
+            var sentenciaSql = $"" +
+                $"SELECT RT.numeroRT, RT.fechaAlta, RT.imagenes," +
+                $" RT.periodicidadMantenimientoPrev, RT.duracionMantenimientoPrev," +
+                $"TRT.nombre as nombreTRT, TRT.descripcion, M.nombre as nombreM " +
+                $"FROM RecursoTecnologico RT JOIN TipoRecursoTecnologico TRT JOIN Modelo M " +
+                $"WHERE RT.idTipoRecursoTecnologico = TRT.id and M.id = RT.idModelo";
+
+            //esa sentencia esta mal
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
             foreach (DataRow fila in tablaResultado.Rows)
             {
@@ -127,28 +133,58 @@ namespace PPAI_DSI.Repositorios
             var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
             foreach (DataRow fila in tablaResultado.Rows)
             {
-                var centro = new CentroDeInvestigacion(
-                    fila["nombre"].ToString(),
-                    fila["sigla"].ToString(),
-                    fila["direccion"].ToString(),
-                    fila["edificio"].ToString(),
-                    Convert.ToInt32(fila["piso"]),
-                    Convert.ToInt32(fila["coordenadas"]),
-                    Convert.ToInt32(fila["telefonoContacto"]),
-                    fila["mail"],
-                    Convert.ToInt32(fila["numeroResolucionCreacion"]),
-                    DateTime.Parse(fila["fechaResolucionCreacion"].ToString()),
-                    fila["reglamento"].ToString(),
-                    fila["caracteristicasGenerales"].ToString(),
-                    DateTime.Parse(fila["fechaAlta"].ToString(),
-                    fila["motivoBaja"],
-                    Convert.ToInt32(fila["tiempoAntelacionReserva"]),
-                    GetResursosXCI(fila["id"].ToString()),
-                    GetAsignacionCientificosDelCI()));
+                //var centro = new CentroDeInvestigacion(
+                //    fila["nombre"].ToString(),
+                //    fila["sigla"].ToString(),
+                //    fila["direccion"].ToString(),
+                //    fila["edificio"].ToString(),
+                //    Convert.ToInt32(fila["piso"]),
+                //    Convert.ToInt32(fila["coordenadas"]),
+                //    Convert.ToInt32(fila["telefonoContacto"]),
+                //    fila["mail"].ToString(),
+                //    Convert.ToInt32(fila["numeroResolucionCreacion"]),
+                //    DateTime.Parse(fila["fechaResolucionCreacion"].ToString()),
+                //    fila["reglamento"].ToString(),
+                //    fila["caracteristicasGenerales"].ToString(),
+                //    DateTime.Parse(fila["fechaAlta"].ToString()),
+                //    fila["motivoBaja"],
+                //    Convert.ToInt32(fila["tiempoAntelacionReserva"]),
+                //    GetRecursosXCI(fila["id"].ToString()));
+                //    //GetAsignacionCientificosDelCI()));
 
-                centros.Add(centro);
+                //centros.Add(centro);
             }
             return centros; ;
+        }
+
+        private object GetRecursosXCI(string id)
+        {
+            List<Caracteristica> caracteristicas = new List<Caracteristica>();
+            List<CambioEstadoRT> cambiosEstadoRT = new List<CambioEstadoRT>();
+            var recursosTecnologicos = new List<RecursoTecnologico>();
+            var sentenciaSql = $"SELECT RT.numeroRT, RT.fechaAlta, RT.imagen, RT.periodicidadMantenimientoPrev, RT.duracionMantenimientoPrev," +
+                $"TRT.nombre as nombreTRT, TRT.descripcion, M.nombre as nombreM " +
+                $"FROM RecursoTecnologico RT JOIN TipoRecursoTecnologico TRT JOIN Modelo M JOIN CentroDeInvestigacion CI " +
+                $"WHERE RT.idTipoRecursoTecnologico = TRT.id and M.id = RT.idModelo and CI.idRecursoTecnologico = RT.numeroRT and CI.id = {id}";
+            var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
+            foreach (DataRow fila in tablaResultado.Rows)
+            {
+                var RT = new RecursoTecnologico(
+                    int.Parse(fila["numeroRT"].ToString()),
+                    DateTime.Parse(fila["fechaAlta"].ToString()),
+                    fila["imagen"].ToString(),
+                    int.Parse(fila["periodicidadMantenimientoPrev"].ToString()),
+                    int.Parse(fila["duracionMantenimientoPrev"].ToString()),
+                    new TipoRecursoTecnologico(fila["nombreTRT"].ToString(), fila["descripcion"].ToString(), caracteristicas),
+                    GetTurnosXRecurso(int.Parse(fila["numeroRT"].ToString())),
+                    new Modelo(fila["nombreM"].ToString()),
+                    cambiosEstadoRT,
+                    new Disponible("Disponible", "El RT se encuentra disponible para ser reservado.", "RT"));
+
+                recursosTecnologicos.Add(RT);
+            }
+
+            return recursosTecnologicos;
         }
 
         public List<Marca> getMarcaBD()
@@ -182,15 +218,41 @@ namespace PPAI_DSI.Repositorios
             return modelos;
 
         }
-
+        //falta implementar
         internal List<Estado> getEstadosBD()
         {
-            throw new NotImplementedException();
+            var modelos = new List<Estado>();
+            var sentenciaSql = $"SELECT * FROM Estado";
+            var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
+            foreach (DataRow fila in tablaResultado.Rows)
+            {
+                //supongo que hay que hacer un if para el ambito y dentro del ambito turno otro if y al diabolo cabron
+            }
+            return modelos;
         }
 
         internal List<PersonalCientiico> getPCBD()
         {
-            throw new NotImplementedException();
+            var modelos = new List<PersonalCientiico>();
+            var sentenciaSql = $"SELECT * FROM PersonalCientifico PC JOIN Usuario U WHERE PC.idUsuario = U.id";
+            var tablaResultado = DBHelper.GetDBHelper().ConsultaSQL(sentenciaSql);
+            foreach (DataRow fila in tablaResultado.Rows)
+            {
+                var personalCientifico = new PersonalCientiico(
+                    fila["legajo"].ToString(),
+                    fila["nombre"].ToString(),
+                    fila["apellido"].ToString(),
+                    fila["nroDoc"].ToString(),
+                    fila["correoInstitucion"].ToString(),
+                    fila["correoPersonal"].ToString(),
+                    fila["telefonoCelular"].ToString(),
+                    new Usuario(fila["usuario"].ToString(),
+                    fila["contraseña"].ToString(),
+                    bool.Parse(fila["habiilitado"].ToString()))
+                    );
+                modelos.Add(personalCientifico);
+            }
+            return modelos;
         }
     }
 }
