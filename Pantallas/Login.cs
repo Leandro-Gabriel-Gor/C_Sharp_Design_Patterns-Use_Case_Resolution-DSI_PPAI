@@ -34,7 +34,8 @@ namespace PPAI_DSI
             }
             if (txtUss.Text.Trim().Equals(usuario.Uss) && txtCon.Text.Trim().Equals(usuario.Con))
             {
-                MessageBox.Show("Sesion iniciada con éxito, bienvenido " + usuario.Uss);
+                MessageBox.Show("Sesion iniciada con éxito, ¡¡¡BIENVENIDO " + usuario.Uss + "!!!", "Atención", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Menu frm = new Menu(usuario, this);
                 Hide();
                 frm.Show();

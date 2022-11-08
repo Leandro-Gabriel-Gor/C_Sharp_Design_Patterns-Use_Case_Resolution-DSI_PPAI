@@ -138,8 +138,9 @@ namespace PPAI_DSI.Entidades
 
         public  string toString()
         {
-            return $"+ Numero RT: {numeroRT} \n" +
-                $"+ ";
+            return $"Numero RT: {numeroRT}. \n" +
+                $"Fecha alta: {fechaAlta}. \n" +
+                $"Tipo de recurso: {tipoRecursoT.getNombre()}";
         }
     }
-}      
+}

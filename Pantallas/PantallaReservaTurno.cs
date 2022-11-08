@@ -122,7 +122,7 @@ namespace PPAI_DSI
                 DateTime.Parse("13/6/2023 7:43:53"),
                 estadoTurno);
 
-         
+
 
             CambioEstadoTurno cambioEstadoTurnoReservado = new CambioEstadoTurno(
                 DateTime.Parse("17/11/2023 19:13:34"),
@@ -130,13 +130,13 @@ namespace PPAI_DSI
 
 
 
-          
+
 
             CambioEstadoTurno cambioEstadoTurno1 = new CambioEstadoTurno(
                 DateTime.Parse("14/05/2019 20:00:01"),
                 estadoTurno1);
 
-          
+
             /* RT */
 
             CambioEstadoRT cambioEstadoRT = new CambioEstadoRT(
@@ -414,7 +414,7 @@ namespace PPAI_DSI
 
         // 2. 
         // Se muestran los tipos y se pide que seleccionen
-        public void pedirSeleccionTipoRT(List<TipoRecursoTecnologico> tiposRT) 
+        public void pedirSeleccionTipoRT(List<TipoRecursoTecnologico> tiposRT)
         {
             cmbTipoRT.Items.Add("Todos");
             cmbTipoRT.SelectedIndex = -1;

@@ -1,5 +1,4 @@
-﻿using PPAI_DSI.Repositorios;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -60,8 +59,8 @@ namespace PPAI_DSI.Entidades
         public void obtenerTipoRT() // Aca se ingresa a BD
         {
             //var tiposRT = tiposRTRepositorio.GetTipos();
-            
-            
+
+
             // metodo que llena la lista tiposRTBD
             //llamar muchas veces el metodo mostrarTipoRecurso
             foreach (TipoRecursoTecnologico tipo in tiposRTBD)
@@ -84,7 +83,7 @@ namespace PPAI_DSI.Entidades
                 tiposRTSeleccionados.Add(tiposRTBD[indice]);
             }
 
-            
+
             this.obtenerRTActivoDeTipoRT();
             List<RecursoTecnologico> rec = recursos;
             List<List<string>> mostrarDatos = new List<List<string>>();
@@ -107,11 +106,11 @@ namespace PPAI_DSI.Entidades
                     if (rec.esDeTipoRT(tipo) && rec.esActivo())
                     {
                         recursos.Add(rec);
-                        
+
                     }
                 }
             }
-            
+
         }
 
         public List<List<string>> ordenarYAgruparRT(List<List<string>> mostrarDatos)
